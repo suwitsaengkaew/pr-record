@@ -1,0 +1,59 @@
+<div class="container">
+  <form>
+  <div class="row">
+    <div class="col-xs-2 form-group">
+      <label for="prno">PR.No</label>
+      <input class="form-control" type="text" id="prno" tabindex="1">
+      <hr>
+      <label for="qty">Qty</label>
+      <input type="text" class="form-control" id="qty" tabindex="6">
+    </div>
+    <div class="col-xs-2 form-group">
+      <label for="currentmonth">Month</label>
+      <input class="form-control" type="text" id="currentmonth" tabindex="2">
+      <hr>
+      <label for="unit">Unit</label>
+      <input type="text" class="form-control" id="unit" tabindex="7">
+    </div>
+    <div class="col-xs-2 form-group">
+      <label for="cost">Cost</label>
+      <input class="form-control" type="text" id="cost" tabindex="3">
+      <hr>
+      <label for="unitprice">Unit Price</label>
+      <input type="text" class="form-control" id="unitprice" tabindex="8">
+    </div>
+    <div class="col-xs-2 form-group">
+      <label for="prdate">PR.Date</label>
+      <input class="form-control" type="text" id="prdate" tabindex="4">
+      <hr>
+      <label for="supname">Supplier Name</label>
+      <input type="text" class="form-control" id="supname" tabindex="9">
+    </div>
+    <div class="row">
+      <div class="col-xs-4 form-group">
+        <label for="itemdesc">Item Description</label>
+        <input class="form-control" type="text" id="itemdesc" tabindex="5">
+        <hr>
+        <div class="row">
+          <div class="col-xs-6 form-group">
+            <label for="duedate">Due Date</label>
+            <input type="text" class="form-control" id="duedate" tabindex="10">
+          </div>
+          <div class="col-xs-6 form-group">
+            <label for="remark">Remark</label>
+            <input type="text" class="form-control" id="remark" tabindex="11">
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-xs-12">
+      <button class="btn btn-primary" type="submit" (click)="itemAdded()">Save</button>
+      <button class="btn btn-default">Cancel</button>
+    </div>
+  </div>
+</form>
+</div>
+<hr>
+<app-prinput-preview></app-prinput-preview>
