@@ -1,4 +1,4 @@
-<div class="container">
+<div class="container-fluid">
   <form>
   <div class="row">
     <div class="col-xs-2 form-group">
@@ -6,28 +6,60 @@
       <input class="form-control" type="text" id="prno" tabindex="1">
       <hr>
       <label for="qty">Qty</label>
-      <input type="text" class="form-control" id="qty" tabindex="6">
+      <input type="number" class="form-control" id="qty" tabindex="6">
     </div>
     <div class="col-xs-2 form-group">
       <label for="currentmonth">Month</label>
-      <input class="form-control" type="text" id="currentmonth" tabindex="2">
+      <div class="dropdown">
+        <button class="form-control btn btn-default dropdown-toggle"
+        type="button" id="currentmonth"
+        data-toggle="dropdown" aria-haspopup="true"
+        aria-expanded="true" tabindex="2">{{ mon }} <span class="caret" style="text-align: right;"></span>
+      </button>
+      <ul class="dropdown-menu" aria-labelledby="currentmonth">
+        <li><a href="#" *ngFor="let month of months" (click)="mon = month.mon"
+          >{{ month.no }}). {{ month.mon }}</a></li>        
+      </ul>
+      </div>
+      <!-- <input class="form-control" type="text" id="currentmonth" tabindex="2"> -->
       <hr>
       <label for="unit">Unit</label>
-      <input type="text" class="form-control" id="unit" tabindex="7">
+      <div class="dropdown">
+        <button class="from-control btn btn-default dropdown-toggle"
+        type="button" id="unit" data-toggle="dropdown" aria-haspopup="true"
+        aria-expanded="true" tabindex="7">
+          {{ unitprice }} <span class="caret"></span>
+        </button>
+        <ul class="dropdown-menu" aria-labelledby="unit">
+          <li><a href="#" *ngFor="let unit of units" (click)="unitprice = unit.unit">{{ unit.unit }}</a></li>
+        </ul>
+      </div>
+      <!-- <input type="text" class="form-control" id="unit" tabindex="7"> -->
     </div>
     <div class="col-xs-2 form-group">
       <label for="cost">Cost</label>
-      <input class="form-control" type="text" id="cost" tabindex="3">
+      <input class="form-control" type="text" id="cost" (input)="onCostKeyup($event)" tabindex="3" #Costinput>
       <hr>
       <label for="unitprice">Unit Price</label>
-      <input type="text" class="form-control" id="unitprice" tabindex="8">
+      <input type="number" class="form-control" id="unitprice" tabindex="8">
     </div>
     <div class="col-xs-2 form-group">
       <label for="prdate">PR.Date</label>
-      <input class="form-control" type="text" id="prdate" tabindex="4">
+      <input class="form-control" type="date" id="prdate" tabindex="4">
       <hr>
       <label for="supname">Supplier Name</label>
-      <input type="text" class="form-control" id="supname" tabindex="9">
+      <div class="dropdown">
+        <button class="form-control btn btn-default dropdown-toggle"
+        type="button" id="supname"
+        data-toggle="dropdown" aria-haspopup="true"
+        aria-expanded="true" tabindex="9">{{ sup }} <span class="caret"></span>
+      </button>
+      <ul class="dropdown-menu" aria-labelledby="supname">
+        <li><a href="#" *ngFor="let supplier of suppliers" (click)="sup = supplier.sp"
+          >{{ supplier.sp }}</a></li>        
+      </ul>
+      </div>
+      <!-- <input type="text" class="form-control" id="supname" tabindex="9"> -->
     </div>
     <div class="row">
       <div class="col-xs-4 form-group">
@@ -37,7 +69,7 @@
         <div class="row">
           <div class="col-xs-6 form-group">
             <label for="duedate">Due Date</label>
-            <input type="text" class="form-control" id="duedate" tabindex="10">
+            <input type="date" class="form-control" id="duedate" tabindex="10">
           </div>
           <div class="col-xs-6 form-group">
             <label for="remark">Remark</label>
@@ -49,7 +81,7 @@
   </div>
   <div class="row">
     <div class="col-xs-12">
-      <button class="btn btn-primary" type="submit" (click)="itemAdded()">Save</button>
+      <button class="btn btn-primary" type="submit" (click)="itemAdded(mon)">Save</button>
       <button class="btn btn-default">Cancel</button>
     </div>
   </div>

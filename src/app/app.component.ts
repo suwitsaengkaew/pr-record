@@ -11,4 +11,8 @@ export class AppComponent {
     this.featureselect = event;
     console.log(event);
   }
+
+  onSaveprData(event: string) {
+    console.log(event);
+  }
 }
