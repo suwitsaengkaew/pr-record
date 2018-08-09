@@ -1,0 +1,8 @@
+.coststate-dropdown {
+    position: absolute;
+    width: auto;
+    height: 200px;
+    max-height: 300px;
+    z-index: 1;
+    background: beige;
+}

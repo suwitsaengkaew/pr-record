@@ -39,11 +39,14 @@
     <!-- Cost Input -->
     <div class="col-xs-2 form-group">
       <label for="cost">Cost</label>
-      <input class="form-control" type="text" id="cost" (keyup)="onCostKeyup($event)" [(ngModel)]="glnumber" [ngModelOptions]="{standalone: true}" tabindex="3" #Costinput>
-      <div *ngIf="costAutoComplete">
-        <ul>
-          <li *ngFor="let glCost of glCosts"><a href="#">{{ glCost.gl }}</a></li>
-        </ul>
+      <input class="form-control" type="text" id="cost" (keyup)="onCostKeyup($event)" 
+      [(ngModel)]="glnumber" [ngModelOptions]="{standalone: true}" tabindex="3">
+      <div *ngIf="costAutoComplete" class="coststate-dropdown">
+        <ul *ngFor="let item of filteredList; let idx = index" >
+          <li [class.complete-selected]="idx === selectedIdx">
+              <a (click)="select(item)">{{item}}</a>
+          </li>
+      </ul>
       </div>
       <hr>
       <label for="unitprice">Unit Price</label>
