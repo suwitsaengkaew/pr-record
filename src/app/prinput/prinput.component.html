@@ -36,9 +36,15 @@
       </div>
       <!-- <input type="text" class="form-control" id="unit" tabindex="7"> -->
     </div>
+    <!-- Cost Input -->
     <div class="col-xs-2 form-group">
       <label for="cost">Cost</label>
-      <input class="form-control" type="text" id="cost" (input)="onCostKeyup($event)" tabindex="3" #Costinput>
+      <input class="form-control" type="text" id="cost" (keyup)="onCostKeyup($event)" [(ngModel)]="glnumber" [ngModelOptions]="{standalone: true}" tabindex="3" #Costinput>
+      <div *ngIf="costAutoComplete">
+        <ul>
+          <li *ngFor="let glCost of glCosts"><a href="#">{{ glCost.gl }}</a></li>
+        </ul>
+      </div>
       <hr>
       <label for="unitprice">Unit Price</label>
       <input type="number" class="form-control" id="unitprice" tabindex="8">

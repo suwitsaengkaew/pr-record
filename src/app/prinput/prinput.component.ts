@@ -11,11 +11,12 @@ export class PrinputComponent implements OnInit {
 // tslint:disable-next-line:no-output-on-prefix
 @Output() onSaveDataEmit = new EventEmitter<string>();
 
-
+  glnumber = '';
+  costAutoComplete = false;
   months = Months;
   suppliers = Suppliers;
   units = Units;
-  glCost = GLs;
+  glCosts = GLs;
   mon = '';
   sup = '';
   unitprice = '';
@@ -38,6 +39,11 @@ export class PrinputComponent implements OnInit {
 
   onCostKeyup(event: Event) {
     console.log((<HTMLInputElement>event.target).value);
+    if (this.glnumber.length === 0) {
+      this.costAutoComplete = false;
+    } else {
+      this.costAutoComplete = true;
+    }
   }
 
 }
