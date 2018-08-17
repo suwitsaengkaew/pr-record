@@ -1,4 +1,4 @@
-import { Component, OnInit, EventEmitter, Output, ElementRef, ViewChild } from '@angular/core';
+import { Component, OnInit, EventEmitter, Output, ElementRef, ViewChild, Input } from '@angular/core';
 import { Months, Suppliers, Units, GLs } from '../shared/templete.model';
 import { PrinputdataModel } from '../shared/pr.model';
 
@@ -13,6 +13,7 @@ import { PrinputdataModel } from '../shared/pr.model';
 export class PrinputComponent implements OnInit {
   // tslint:disable-next-line:no-output-on-prefix
   @Output() onSaveDataEmit = new EventEmitter<PrinputdataModel>();
+  @Input() prinputdata = new EventEmitter<PrinputdataModel>();
   @ViewChild('prnumber') prnumber: ElementRef;
   @ViewChild('qtynumber') qtynumber: ElementRef;
   @ViewChild('glnumber') glnumber: ElementRef;
@@ -23,6 +24,7 @@ export class PrinputComponent implements OnInit {
   @ViewChild('remark') remark: ElementRef;
 
   // glnumber = '';
+  prinputdatas: PrinputdataModel[];
   filteredList = [];
   selected = [];
   costAutoComplete = false;
@@ -45,9 +47,9 @@ export class PrinputComponent implements OnInit {
   ngOnInit() {
   }
 
-  itemAdded() {
+  itemPrAdded() {
     // console.log(prrecord);
-    this.onSaveDataEmit.emit({
+    this.prinputdatas.push({
       prno: this.prnumber.nativeElement.value ,
       glcost: this.glnumber.nativeElement.value,
       prdate: this.prdate.nativeElement.value,
@@ -58,7 +60,8 @@ export class PrinputComponent implements OnInit {
       suppliername: 'IT Advance',
       duedate: this.duedate.nativeElement.value,
       remark: this.remark.nativeElement.value
-  });
+    });
+    this.onSaveDataEmit.emit(this.prinputdatas[0]);
     // console.log('Item Added');
     // console.log(this.mon);
   }

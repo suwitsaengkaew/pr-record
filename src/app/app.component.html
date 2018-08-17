@@ -1,4 +1,4 @@
 <app-header (featureSelectedEmit)="onFeatureSelected($event)"></app-header>
-<app-prinput (onSaveDataEmit)="onSaveprData($event)"*ngIf="featureselect === 'prinput'"></app-prinput>
-<app-prinput-preview *ngFor="let prinputdata of prinputdatas"></app-prinput-preview>
+<app-prinput (onSaveDataEmit)="onSaveprData($event)"
+*ngIf="featureselect === 'prinput'"></app-prinput>
 <app-prview *ngIf="featureselect !== 'prinput'"></app-prview>

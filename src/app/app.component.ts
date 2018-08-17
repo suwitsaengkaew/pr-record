@@ -16,5 +16,6 @@ export class AppComponent {
 
   onSaveprData(event: PrinputdataModel) {
     this.prinputdatas = event;
+    console.log(this.prinputdatas);
   }
 }

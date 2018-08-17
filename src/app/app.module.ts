@@ -8,6 +8,7 @@ import { HeaderComponent } from './header/header.component';
 import { PrinputComponent } from './prinput/prinput.component';
 import { PrviewComponent } from './prview/prview.component';
 import { PrinputPreviewComponent } from './prinput/prinput-preview/prinput-preview.component';
+import { PrinputformComponent } from './prinput/prinputform/prinputform.component';
 
 
 @NgModule({
@@ -16,7 +17,8 @@ import { PrinputPreviewComponent } from './prinput/prinput-preview/prinput-previ
     HeaderComponent,
     PrinputComponent,
     PrviewComponent,
-    PrinputPreviewComponent
+    PrinputPreviewComponent,
+    PrinputformComponent
   ],
   imports: [
     BrowserModule,
