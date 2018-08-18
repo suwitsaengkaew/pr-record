@@ -1,4 +1,4 @@
-import { Component, OnInit, EventEmitter, Input } from '@angular/core';
+import { Component, OnInit, EventEmitter, Input, ElementRef, ViewChild, Output } from '@angular/core';
 import { PrinputdataModel } from '../../shared/pr.model';
 
 @Component({
@@ -7,11 +7,11 @@ import { PrinputdataModel } from '../../shared/pr.model';
   styleUrls: ['./prinput-preview.component.css']
 })
 export class PrinputPreviewComponent implements OnInit {
-  @Input() prinputdata: PrinputdataModel;
+  @Input() prinputdatas: PrinputdataModel;
+
 
   constructor() { }
 
   ngOnInit() {
   }
-
 }

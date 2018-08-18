@@ -1,7 +1,9 @@
 <div class="container-fluid">
-  <app-prinputform (prinputemit)="itemPrAdded()"></app-prinputform>
+  <app-prinputform (onInputPrData)="prinputdatas = $event"></app-prinputform>
+  <hr>
+  <!-- <app-prinput-preview
+  *ngFor="let prinputdata of prinputdatas"
+  [prinputdata]="prinputdata"></app-prinput-preview> -->
+   <app-prinput-preview
+  [prinputdatas]="prinputdatas"></app-prinput-preview>
 </div>
-<hr>
-<app-prinput-preview 
-*ngFor="let prinputdata of prinputdatas "
-[prinputdata]="prinputdata"></app-prinput-preview>

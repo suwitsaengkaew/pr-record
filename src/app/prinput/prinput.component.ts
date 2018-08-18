@@ -14,56 +14,45 @@ export class PrinputComponent implements OnInit {
   // tslint:disable-next-line:no-output-on-prefix
   @Output() onSaveDataEmit = new EventEmitter<PrinputdataModel>();
   @Input() prinputdata = new EventEmitter<PrinputdataModel>();
-  @ViewChild('prnumber') prnumber: ElementRef;
-  @ViewChild('qtynumber') qtynumber: ElementRef;
-  @ViewChild('glnumber') glnumber: ElementRef;
-  @ViewChild('unitpricenumber') unitpricenumber: ElementRef;
-  @ViewChild('prdate') prdate: ElementRef;
-  @ViewChild('itemdescription') itemdescription: ElementRef;
-  @ViewChild('duedate') duedate: ElementRef;
-  @ViewChild('remark') remark: ElementRef;
+
 
   // glnumber = '';
-  prinputdatas: PrinputdataModel[];
-  filteredList = [];
-  selected = [];
-  costAutoComplete = false;
-  months = Months;
-  suppliers = Suppliers;
-  units = Units;
-  glCosts = GLs;
-  selectedIdx: number;
-  mon = '';
-  sup = '';
-  unitprice = '';
+  prinputdatas: PrinputdataModel[] = [
+    // new PrinputdataModel(
+    //   'prno', 'glcost', 'prdate', 'itemdesc', 1000, 'Sets', 500, 'IT Advance', 'duedate', 'remark'
+    // ),
+    // new PrinputdataModel(
+    //   'prno', 'glcost', 'prdate', 'itemdesc', 1000, 'Sets', 500, 'IT Advance', 'duedate', 'remark'
+    // ),
+    // new PrinputdataModel(
+    //   'prno', 'glcost', 'prdate', 'itemdesc', 1000, 'Sets', 500, 'IT Advance', 'duedate', 'remark'
+    // )
+  ];
+  // filteredList = [];
+  // selected = [];
+  // costAutoComplete = false;
+  // months = Months;
+  // suppliers = Suppliers;
+  // units = Units;
+  // glCosts = GLs;
+  // selectedIdx: number;
+  // mon = '';
+  // sup = '';
+  // unitprice = '';
 
 
   constructor(private elementRef: ElementRef) {
-    this.mon = 'Month';
-    this.sup = 'Supplier List';
-    this.unitprice = 'Units';
+    // this.mon = 'Month';
+    // this.sup = 'Supplier List';
+    // this.unitprice = 'Units';
   }
 
   ngOnInit() {
   }
 
   itemPrAdded() {
-    // console.log(prrecord);
-    this.prinputdatas.push({
-      prno: this.prnumber.nativeElement.value ,
-      glcost: this.glnumber.nativeElement.value,
-      prdate: this.prdate.nativeElement.value,
-      itemdesc: this.itemdescription.nativeElement.value,
-      qty: this.qtynumber.nativeElement.value,
-      unit: 'Sets',
-      price: this.unitpricenumber.nativeElement.value,
-      suppliername: 'IT Advance',
-      duedate: this.duedate.nativeElement.value,
-      remark: this.remark.nativeElement.value
-    });
-    this.onSaveDataEmit.emit(this.prinputdatas[0]);
-    // console.log('Item Added');
-    // console.log(this.mon);
+    console.log(this.prinputdatas);
+    // this.prinputdatas.push();
   }
 
   onCostKeyup(event: any) {
@@ -85,43 +74,43 @@ export class PrinputComponent implements OnInit {
     // }
   }
 
-  handleClick(event) {
-    let clickedComponent = event.target;
-    let inside = false;
-    do {
-      if (clickedComponent === this.elementRef.nativeElement) {
-        inside = true;
-      }
-      clickedComponent = clickedComponent.parentNode;
-    } while (clickedComponent);
-    if (!inside) {
-      this.filteredList = [];
-    }
-    this.selectedIdx = -1;
-  }
+  // handleClick(event) {
+  //   let clickedComponent = event.target;
+  //   let inside = false;
+  //   do {
+  //     if (clickedComponent === this.elementRef.nativeElement) {
+  //       inside = true;
+  //     }
+  //     clickedComponent = clickedComponent.parentNode;
+  //   } while (clickedComponent);
+  //   if (!inside) {
+  //     this.filteredList = [];
+  //   }
+  //   this.selectedIdx = -1;
+  // }
 
-  handleEnter() {
-    if (this.selectedIdx > -1) {
-      // if (this.multi) {
-      //   this.query = '';
-      // } else {
-        this.glnumber = this.filteredList[this.selectedIdx];
-      // }
-      // this.selected.push(this.query);
-    }
-    this.filteredList = [];
-    this.selectedIdx = -1;
-  }
+  // handleEnter() {
+  //   if (this.selectedIdx > -1) {
+  //     // if (this.multi) {
+  //     //   this.query = '';
+  //     // } else {
+  //       this.glnumber = this.filteredList[this.selectedIdx];
+  //     // }
+  //     // this.selected.push(this.query);
+  //   }
+  //   this.filteredList = [];
+  //   this.selectedIdx = -1;
+  // }
 
-  select(item) {
-    // this.selected.push(item);
-    // if (this.multi) {
-    //  this.query = '';
-    // } else {
-      this.glnumber = item;
-    // }
-    this.filteredList = [];
-    this.selectedIdx = -1;
-  }
+  // select(item) {
+  //   // this.selected.push(item);
+  //   // if (this.multi) {
+  //   //  this.query = '';
+  //   // } else {
+  //     this.glnumber = item;
+  //   // }
+  //   this.filteredList = [];
+  //   this.selectedIdx = -1;
+  // }
 
 }
