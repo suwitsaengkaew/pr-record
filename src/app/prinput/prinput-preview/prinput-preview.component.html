@@ -1,1 +1,33 @@
-{{ prinputdatas | json}}
+<table class="table">
+  <thead>
+    <tr>
+      <td>PR Number</td>
+      <td>GL Number</td>
+      <td>PR Date</td>
+      <td>Item Desctription</td>
+      <td>Unit Price</td>
+      <td>Qty</td>
+      <td>Unit</td>
+      <td>Total Price</td>
+      <td>Supplier Name</td>
+      <td>Due Date</td>
+      <td>Remark</td>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let prinputdata of prinputdatas">
+      <td>{{ prinputdata.prno }}</td>
+      <td>{{ prinputdata.glcost }}</td>
+      <td>{{ prinputdata.prdate }}</td>
+      <td>{{ prinputdata.itemdesc }}</td>
+      <td>{{ prinputdata.price }}</td>
+      <td>{{ prinputdata.qty }}</td>
+      <td>{{ prinputdata.unit }}</td>
+      <td>500000</td>
+      <td>{{ prinputdata.suppliername }}</td>
+      <td>{{ prinputdata.duedate }}</td>
+      <td>{{ prinputdata.remark }}
+      </td>
+    </tr>
+  </tbody>
+</table>

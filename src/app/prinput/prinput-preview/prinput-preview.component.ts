@@ -7,7 +7,7 @@ import { PrinputdataModel } from '../../shared/pr.model';
   styleUrls: ['./prinput-preview.component.css']
 })
 export class PrinputPreviewComponent implements OnInit {
-  @Input() prinputdatas: PrinputdataModel;
+  @Input() prinputdatas: PrinputdataModel[] = [];
 
 
   constructor() { }

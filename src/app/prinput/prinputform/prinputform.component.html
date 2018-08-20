@@ -3,10 +3,11 @@
     <!-- 1st column -->
     <div class="col-xs-2 form-group">
       <label for="prno">PR.No</label>
-      <input class="form-control" type="text" id="prno" tabindex="1" #prnumber>
+      <input class="form-control" type="text" id="prno" tabindex="1" maxlength="9" #prnumber>
       <hr>
-      <label for="qty">Qty</label>
-      <input type="number" class="form-control" id="qty" tabindex="6" #qtynumber>
+      <label for="price">Price</label>
+      <input type="number" class="form-control" id="price" tabindex="6" #price>
+  
     </div>
     <!-- 1st column -->
 
@@ -17,7 +18,7 @@
         <button class="form-control btn btn-default dropdown-toggle"
         type="button" id="currentmonth"
         data-toggle="dropdown" aria-haspopup="true"
-        aria-expanded="true" tabindex="2">{{ mon }} <span class="caret"></span>
+        aria-expanded="true" tabindex="2">{{mon}} <span class="caret"></span>
       </button>
       <ul class="dropdown-menu" aria-labelledby="currentmonth">
         <li><a href="#" *ngFor="let month of months" (click)="mon = month.mon"
@@ -26,17 +27,27 @@
       </div>
       <!-- <input class="form-control" type="text" id="currentmonth" tabindex="2"> -->
       <hr>
-      <label for="unit">Unit</label>
-      <div class="dropdown">
-        <button class="from-control btn btn-default dropdown-toggle"
-        type="button" id="unit" data-toggle="dropdown" aria-haspopup="true"
-        aria-expanded="true" tabindex="7">
-          {{ unitprice }} <span class="caret"></span>
-        </button>
-        <ul class="dropdown-menu" aria-labelledby="unit">
-          <li><a href="#" *ngFor="let unit of units" (click)="unitprice = unit.unit">{{ unit.unit }}</a></li>
-        </ul>
+      <div class="row">
+        <div class="col-xs-6 form-group">
+            <label for="qty">Qty</label>
+            <input type="number" class="form-control" id="qty" tabindex="7" maxlength="3" #qtynumber>
+        </div>
+         <div class="col-xs-4 form-group">
+            <label for="unit">Unit</label>
+            <div class="dropdown">
+              <button class="from-control btn btn-default dropdown-toggle"
+              type="button" id="unit" data-toggle="dropdown" aria-haspopup="true"
+              aria-expanded="true" tabindex="8">
+                {{ unitprice }} <span class="caret"></span>
+              </button>
+              <ul class="dropdown-menu" aria-labelledby="unit">
+                <li><a href="#" *ngFor="let unit of units" (click)="unitprice = unit.unit">{{ unit.unit }}</a></li>
+              </ul>
+            </div>
+         </div> 
+          
       </div>
+      
       <!-- <input type="text" class="form-control" id="unit" tabindex="7"> -->
     </div>
     <!-- 2nd column -->
@@ -44,8 +55,7 @@
     <!-- 3rd column -->
     <div class="col-xs-2 form-group">
       <label for="cost">Cost</label>
-      <input class="form-control" type="text" id="cost" (keyup)="onCostKeyup($event)" 
-      tabindex="3" #glnumber>
+      <input class="form-control" type="text" id="cost" tabindex="3" #glnumber>
       <!-- <input class="form-control" type="text" id="cost" (keyup)="onCostKeyup($event)" 
       [(ngModel)]="glnumber" [ngModelOptions]="{standalone: true}" tabindex="3"> -->
       <!-- <div *ngIf="costAutoComplete" class="coststate-dropdown">
@@ -57,7 +67,7 @@
       </div> -->
       <hr>
       <label for="unitprice">Unit Price</label>
-      <input type="number" class="form-control" id="unitprice" tabindex="8" #unitpricenumber>
+      <input type="number" class="form-control" id="unitprice" tabindex="9" #unitpricenumber>
     </div>
     <!-- 3rd column -->
 
@@ -72,7 +82,7 @@
         <button class="form-control btn btn-default dropdown-toggle"
         type="button" id="supname"
         data-toggle="dropdown" aria-haspopup="true"
-        aria-expanded="true" tabindex="9">{{ sup }} <span class="caret"></span>
+        aria-expanded="true" tabindex="10">{{ sup }} <span class="caret"></span>
       </button>
       <ul class="dropdown-menu" aria-labelledby="supname">
         <li><a href="#" *ngFor="let supplier of suppliers" (click)="sup = supplier.sp"
@@ -92,11 +102,11 @@
         <div class="row">
           <div class="col-xs-6 form-group">
             <label for="duedate">Due Date</label>
-            <input type="date" class="form-control" id="duedate" tabindex="10" #duedate>
+            <input type="date" class="form-control" id="duedate" tabindex="11" #duedate>
           </div>
           <div class="col-xs-6 form-group">
             <label for="remark">Remark</label>
-            <input type="text" class="form-control" id="remark" tabindex="11" #remark>
+            <input type="text" class="form-control" id="remark" tabindex="12" #remark>
           </div>
         </div>
       </div>

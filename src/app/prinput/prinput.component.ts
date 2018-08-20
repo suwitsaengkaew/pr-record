@@ -50,9 +50,9 @@ export class PrinputComponent implements OnInit {
   ngOnInit() {
   }
 
-  itemPrAdded() {
-    console.log(this.prinputdatas);
-    // this.prinputdatas.push();
+  itemPrAdded(event: PrinputdataModel) {
+    console.log(event);
+    this.prinputdatas.push(event);
   }
 
   onCostKeyup(event: any) {
