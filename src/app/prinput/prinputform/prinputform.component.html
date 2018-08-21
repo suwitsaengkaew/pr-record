@@ -3,123 +3,94 @@
     <!-- 1st column -->
     <div class="col-xs-2 form-group">
       <label for="prno">PR.No</label>
-      <input class="form-control" type="text" id="prno" tabindex="1" maxlength="9" #prnumber>
+      <div class="input-group">
+        <span class="input-group-addon" id="basic-addon1">PR-</span>
+        <input class="form-control" type="text" id="prno" tabindex="1" maxlength="9" aria-describedby="basic-addon1" #prnumber>
+      </div>
       <hr>
       <label for="price">Price</label>
-      <input type="number" class="form-control" id="price" tabindex="6" #price>
-  
+      <input type="number" class="form-control" id="price" tabindex="6" (keyup)="onKeyup($event)" #price>
     </div>
     <!-- 1st column -->
 
     <!-- 2nd column -->
     <div class="col-xs-2 form-group">
-      <label for="currentmonth">Month</label>
-      <div class="dropdown">
-        <button class="form-control btn btn-default dropdown-toggle"
-        type="button" id="currentmonth"
-        data-toggle="dropdown" aria-haspopup="true"
-        aria-expanded="true" tabindex="2">{{mon}} <span class="caret"></span>
-      </button>
-      <ul class="dropdown-menu" aria-labelledby="currentmonth">
-        <li><a href="#" *ngFor="let month of months" (click)="mon = month.mon"
-          >{{ month.no }}). {{ month.mon }}</a></li>        
-      </ul>
-      </div>
-      <!-- <input class="form-control" type="text" id="currentmonth" tabindex="2"> -->
+      <label for="cost">Cost</label>
+      <input class="form-control" type="text" id="cost" tabindex="3" #glnumber>
       <hr>
       <div class="row">
         <div class="col-xs-6 form-group">
-            <label for="qty">Qty</label>
-            <input type="number" class="form-control" id="qty" tabindex="7" maxlength="3" #qtynumber>
+          <label for="qty">Qty</label>
+          <input type="number" class="form-control" id="qty" tabindex="7" maxlength="3" #qtynumber>
         </div>
-         <div class="col-xs-4 form-group">
-            <label for="unit">Unit</label>
-            <div class="dropdown">
-              <button class="from-control btn btn-default dropdown-toggle"
-              type="button" id="unit" data-toggle="dropdown" aria-haspopup="true"
+        <div class="col-xs-4 form-group">
+          <label for="unit">Unit</label>
+          <div class="dropdown">
+            <button class="from-control btn btn-default dropdown-toggle" type="button" id="unit" data-toggle="dropdown" aria-haspopup="true"
               aria-expanded="true" tabindex="8">
-                {{ unitprice }} <span class="caret"></span>
-              </button>
-              <ul class="dropdown-menu" aria-labelledby="unit">
-                <li><a href="#" *ngFor="let unit of units" (click)="unitprice = unit.unit">{{ unit.unit }}</a></li>
-              </ul>
-            </div>
-         </div> 
-          
+              {{ unitprice }}
+              <span class="caret"></span>
+            </button>
+            <ul class="dropdown-menu" aria-labelledby="unit">
+              <li>
+                <a href="#" *ngFor="let unit of units" (click)="unitprice = unit.unit">{{ unit.unit }}</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+
       </div>
-      
-      <!-- <input type="text" class="form-control" id="unit" tabindex="7"> -->
     </div>
     <!-- 2nd column -->
 
     <!-- 3rd column -->
     <div class="col-xs-2 form-group">
-      <label for="cost">Cost</label>
-      <input class="form-control" type="text" id="cost" tabindex="3" #glnumber>
-      <!-- <input class="form-control" type="text" id="cost" (keyup)="onCostKeyup($event)" 
-      [(ngModel)]="glnumber" [ngModelOptions]="{standalone: true}" tabindex="3"> -->
-      <!-- <div *ngIf="costAutoComplete" class="coststate-dropdown">
-        <ul *ngFor="let item of filteredList; let idx = index" >
-          <li [class.complete-selected]="idx === selectedIdx">
-              <a (click)="select(item)">{{item}}</a>
-          </li>
-      </ul>
-      </div> -->
+      <label for="prdate">PR.Date</label>
+      <input class="form-control" type="date" id="prdate" tabindex="4" #prdate>
       <hr>
       <label for="unitprice">Unit Price</label>
-      <input type="number" class="form-control" id="unitprice" tabindex="9" #unitpricenumber>
+      <input disabled="true" type="number" class="form-control" id="unitprice" tabindex="9" #totalpricenumber>
     </div>
     <!-- 3rd column -->
 
     <!-- 4th column -->
-    <div class="col-xs-2 form-group">
-      <label for="prdate">PR.Date</label>
-      <input class="form-control" type="date" id="prdate" tabindex="4" #prdate>
+    <div class="col-xs-6 form-group">
+      <label for="itemdesc">Item Description</label>
+      <input class="form-control" type="text" id="itemdesc" tabindex="5" #itemdescription>
+
       <hr>
-
-      <label for="supname">Supplier Name</label>
-      <div class="dropdown">
-        <button class="form-control btn btn-default dropdown-toggle"
-        type="button" id="supname"
-        data-toggle="dropdown" aria-haspopup="true"
-        aria-expanded="true" tabindex="10">{{ sup }} <span class="caret"></span>
-      </button>
-      <ul class="dropdown-menu" aria-labelledby="supname">
-        <li><a href="#" *ngFor="let supplier of suppliers" (click)="sup = supplier.sp"
-          >{{ supplier.sp }}</a></li>        
-      </ul>
-      </div>
-      <!-- <input type="text" class="form-control" id="supname" tabindex="9"> -->
-    </div>
-    <!-- 4th column -->
-
-    <!-- 5th column -->
-    <div class="row">
-      <div class="col-xs-4 form-group">
-        <label for="itemdesc">Item Description</label>
-        <input class="form-control" type="text" id="itemdesc" tabindex="5" #itemdescription>
-        <hr>
-        <div class="row">
-          <div class="col-xs-6 form-group">
-            <label for="duedate">Due Date</label>
-            <input type="date" class="form-control" id="duedate" tabindex="11" #duedate>
+      <div class="row">
+        <div class="col-xs-4 form-group">
+          <label for="supname">Supplier Name</label>
+          <div class="dropdown">
+            <button class="form-control btn btn-default dropdown-toggle" type="button" id="supname" data-toggle="dropdown" aria-haspopup="true"
+              aria-expanded="true" tabindex="10">{{ sup }}
+              <span class="caret"></span>
+            </button>
+            <ul class="dropdown-menu" aria-labelledby="supname">
+              <li>
+                <a href="#" *ngFor="let supplier of suppliers" (click)="sup = supplier.sp">{{ supplier.sp }}</a>
+              </li>
+            </ul>
           </div>
-          <div class="col-xs-6 form-group">
-            <label for="remark">Remark</label>
-            <input type="text" class="form-control" id="remark" tabindex="12" #remark>
-          </div>
+        </div>
+
+        <div class="col-xs-4 form-group">
+          <label for="duedate">Due Date</label>
+          <input type="date" class="form-control" id="duedate" tabindex="11" #duedate>
+        </div>
+        <div class="col-xs-4 form-group">
+          <label for="remark">Remark</label>
+          <input type="text" class="form-control" id="remark" tabindex="12" #remark>
         </div>
       </div>
     </div>
-    <!-- 5th column -->
-
+    <!-- 4th column -->
 
   </div>
   <div class="row">
     <div class="col-xs-12">
-      <button class="btn btn-primary"
-       type="submit"
-       (click)="itemAdded()">Save</button>
+      <button class="btn btn-primary" type="submit" (click)="itemAdded()">Save</button>
       <button class="btn btn-default">Cancel</button>
     </div>
   </div>
