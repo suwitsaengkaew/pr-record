@@ -2,6 +2,9 @@ import { Component, OnInit, EventEmitter, Output, ElementRef, ViewChild, Input }
 import { Months, Suppliers, Units, GLs } from '../shared/templete.model';
 import { PrinputdataModel } from '../shared/pr.model';
 
+// Service
+import { PurchaseOrderService } from '../services/pr.service';
+
 @Component({
   selector: 'app-prinput',
   // host: {
@@ -41,7 +44,10 @@ export class PrinputComponent implements OnInit {
   // unitprice = '';
 
 
-  constructor(private elementRef: ElementRef) {
+  constructor(
+    private elementRef: ElementRef,
+    private service: PurchaseOrderService
+  ) {
     // this.mon = 'Month';
     // this.sup = 'Supplier List';
     // this.unitprice = 'Units';
@@ -51,8 +57,9 @@ export class PrinputComponent implements OnInit {
   }
 
   itemPrAdded(event: PrinputdataModel) {
-    console.log(event);
+    console.log(JSON.stringify(event));
     this.prinputdatas.push(event);
+    this.service.helloWorld(event);
   }
 
   onCostKeyup(event: any) {

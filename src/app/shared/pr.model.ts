@@ -29,9 +29,10 @@ export class PrinputdataModel {
         public glcost: string,
         public prdate: string,
         public itemdesc: string,
+        public unitprice: number,
         public qty: number,
         public unit: string,
-        public price: number,
+        public amountprice: number,
         public suppliername: string,
         public duedate: string,
         public remark: string

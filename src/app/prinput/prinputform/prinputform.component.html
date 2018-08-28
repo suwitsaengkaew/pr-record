@@ -28,12 +28,12 @@
           <div class="dropdown">
             <button class="from-control btn btn-default dropdown-toggle" type="button" id="unit" data-toggle="dropdown" aria-haspopup="true"
               aria-expanded="true" tabindex="8">
-              {{ unitprice }}
+              {{ unit }}
               <span class="caret"></span>
             </button>
             <ul class="dropdown-menu" aria-labelledby="unit">
               <li>
-                <a href="#" *ngFor="let unit of units" (click)="unitprice = unit.unit">{{ unit.unit }}</a>
+                <a href="#" *ngFor="let _unit of units" (click)="unit = _unit.unit">{{ _unit.unit }}</a>
               </li>
             </ul>
           </div>
@@ -92,6 +92,7 @@
     <div class="col-xs-12">
       <button class="btn btn-primary" type="submit" (click)="itemAdded()">Save</button>
       <button class="btn btn-default">Cancel</button>
+      <button class="btn btn-danger" type="button">Test Service</button>
     </div>
   </div>
 </form>

@@ -10,9 +10,10 @@ import { Months, Suppliers, Units } from '../../shared/templete.model';
 export class PrinputformComponent implements OnInit {
     // tslint:disable-next-line:no-output-on-prefix
   @Output() onInputPrData = new EventEmitter<PrinputdataModel>();
+  @Output() ServiceClick = new EventEmitter<String>();
   // Column 1
   @ViewChild('prnumber') prnumber: ElementRef;
-  @ViewChild('price') price: ElementRef;
+  @ViewChild('price') unitprice: ElementRef;
   // Column 1
 
   // Column 2
@@ -22,7 +23,7 @@ export class PrinputformComponent implements OnInit {
 
   // Column 3
   @ViewChild('prdate') prdate: ElementRef;
-  @ViewChild('totalpricenumber') totalpricenumber: ElementRef;
+  @ViewChild('totalpricenumber') amountprice: ElementRef;
   // Column 3
 
   // Column 4
@@ -35,12 +36,13 @@ export class PrinputformComponent implements OnInit {
   units = Units;
   suppliers = Suppliers;
   mon = ''; // Month
-  unitprice = ''; // Unit
+  unit = ''; // Unit
   sup = '';  // Supplier Name
 
-  constructor() {
+  constructor(
+  ) {
     this.mon = 'Month';
-    this.unitprice = 'Unit';
+    this.unit = 'Unit';
     this.sup = 'Supplier Name';
    }
 
@@ -62,7 +64,7 @@ export class PrinputformComponent implements OnInit {
     }
 
     if (_prdate.length > 0) {
-      alert(_prdate);
+      // alert(_prdate);
     } else { console.log('PR Date' + _prdate.length); }
 
     if (_itemdescription < 1) {
@@ -73,10 +75,11 @@ export class PrinputformComponent implements OnInit {
       glcost: this.glnumber.nativeElement.value,
       prdate: this.prdate.nativeElement.value,
       itemdesc: this.itemdescription.nativeElement.value,
+      unitprice: this.unitprice.nativeElement.value,
       qty: this.qtynumber.nativeElement.value,
-      unit: 'Sets',
-      price: this.price.nativeElement.value,
-      suppliername: 'IT Advance',
+      unit: this.unit,
+      amountprice: this.amountprice.nativeElement.value,
+      suppliername: this.sup,
       duedate: this.duedate.nativeElement.value,
       remark: this.remark.nativeElement.value
     });
@@ -86,7 +89,7 @@ export class PrinputformComponent implements OnInit {
     // console.log((<HTMLInputElement>event.target).value);
     if (event.target.value.length !== 0) {
       // console.log(this.price.nativeElement.value);
-      this.totalpricenumber.nativeElement.value = this.price.nativeElement.value * this.qtynumber.nativeElement.value;
+      this.amountprice.nativeElement.value = this.unitprice.nativeElement.value * this.qtynumber.nativeElement.value;
     }
 
   }
