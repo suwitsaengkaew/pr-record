@@ -1,5 +1,4 @@
-import { Component, OnInit, EventEmitter, Output, ElementRef, ViewChild, Input } from '@angular/core';
-import { Months, Suppliers, Units, GLs } from '../shared/templete.model';
+import { Component, OnInit, EventEmitter, Output, Input } from '@angular/core';
 import { PrinputdataModel } from '../shared/pr.model';
 
 // Service
@@ -18,68 +17,32 @@ export class PrinputComponent implements OnInit {
   @Output() onSaveDataEmit = new EventEmitter<PrinputdataModel>();
   @Input() prinputdata = new EventEmitter<PrinputdataModel>();
 
-
-  // glnumber = '';
-  prinputdatas: PrinputdataModel[] = [
-    // new PrinputdataModel(
-    //   'prno', 'glcost', 'prdate', 'itemdesc', 1000, 'Sets', 500, 'IT Advance', 'duedate', 'remark'
-    // ),
-    // new PrinputdataModel(
-    //   'prno', 'glcost', 'prdate', 'itemdesc', 1000, 'Sets', 500, 'IT Advance', 'duedate', 'remark'
-    // ),
-    // new PrinputdataModel(
-    //   'prno', 'glcost', 'prdate', 'itemdesc', 1000, 'Sets', 500, 'IT Advance', 'duedate', 'remark'
-    // )
-  ];
-  // filteredList = [];
-  // selected = [];
-  // costAutoComplete = false;
-  // months = Months;
-  // suppliers = Suppliers;
-  // units = Units;
-  // glCosts = GLs;
-  // selectedIdx: number;
-  // mon = '';
-  // sup = '';
-  // unitprice = '';
-
+  prinputdatas: PrinputdataModel[] = [];
 
   constructor(
-    private elementRef: ElementRef,
     private service: PurchaseOrderService
-  ) {
-    // this.mon = 'Month';
-    // this.sup = 'Supplier List';
-    // this.unitprice = 'Units';
-  }
+  ) {}
 
   ngOnInit() {
   }
 
   itemPrAdded(event: PrinputdataModel) {
-    console.log(JSON.stringify(event));
-    this.prinputdatas.push(event);
-    this.service.helloWorld(event);
+    this.service.helloWorld(event)
+    .toPromise()
+    .then(
+      status => {
+        const _state = JSON.parse(status.text());
+        if ( (_state[0]['notice']['text']) === 'Added' ) {
+          this.prinputdatas.push(event);
+        }
+      })
+      .catch(
+        err => {
+          console.log('Err -> ', err);
+        }
+      );
   }
 
-  onCostKeyup(event: any) {
-    // console.log((<HTMLInputElement>event.target).value);
-    // if (this.glnumber.length === 0) {
-    //   this.costAutoComplete = false;
-    //   this.filteredList = this.glCosts.filter((filter) => {
-    //     return filter.gl.toLowerCase().indexOf(this.glnumber.toLowerCase()) > -1;
-    //   });
-    //   if (event.code === 'ArrowDown' && this.selectedIdx < this.filteredList.length) {
-    //     this.selectedIdx++;
-    //   } else if (event.code === 'ArrowUp' && this.selectedIdx > 0) {
-    //     this.selectedIdx--;
-    //   } else if (event.code === 'Enter') {
-    //     this.handleEnter();
-    //   }
-    // } else {
-    //   this.costAutoComplete = true;
-    // }
-  }
 
   // handleClick(event) {
   //   let clickedComponent = event.target;

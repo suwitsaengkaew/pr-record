@@ -1,4 +1,4 @@
-import { MonthModel, GLCostModel, UnitsModel, SuppliersModel } from './pr.model';
+import { MonthModel, GLCostModel, UnitsModel, SuppliersModel, CostCenter } from './pr.model';
 
 export const Months: MonthModel[] = [
     { no: '01', mon: 'January' },
@@ -23,6 +23,14 @@ export const GLs: GLCostModel[] = [
     { gl: '8410350' },
     { gl: '8440300' },
     { gl: '8440310' },
+];
+
+export const CostCenters: CostCenter[] = [
+    { costcenter: 'TBS' },
+    { costcenter: 'PC/LT' },
+    { costcenter: 'Sunari' },
+    { costcenter: 'TTCA' },
+    { costcenter: 'TDCT' }
 ];
 
 export const Units: UnitsModel[] = [

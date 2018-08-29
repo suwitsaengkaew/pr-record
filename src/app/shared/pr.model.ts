@@ -23,9 +23,16 @@ export class SuppliersModel {
     ) {}
 }
 
+export class CostCenter {
+    constructor(
+        public costcenter: string
+    ){}
+}
+
 export class PrinputdataModel {
     constructor(
         public prno: string,
+        public costcenter: string,
         public glcost: string,
         public prdate: string,
         public itemdesc: string,

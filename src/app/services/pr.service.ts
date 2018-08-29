@@ -15,10 +15,6 @@ export class PurchaseOrderService {
 
     helloWorld(prinputdata: PrinputdataModel) {
         const _Url = this.Url + 'pr/prinputrecord';
-        return this.http.put(_Url, JSON.stringify(prinputdata))
-        .subscribe(
-            status => { console.log('Status -> ', status); },
-            err => { console.log('Err -> ', err); },
-          );
+        return this.http.put(_Url, JSON.stringify(prinputdata));
     }
 }

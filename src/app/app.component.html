@@ -1,3 +1,3 @@
 <app-header (featureSelectedEmit)="onFeatureSelected($event)"></app-header>
-<app-prinput (onSaveDataEmit)="onSaveprData($event)"*ngIf="featureselect === 'prinput'"></app-prinput>
+<app-prinput *ngIf="featureselect === 'prinput'"></app-prinput>
 <app-prview *ngIf="featureselect !== 'prinput'"></app-prview>

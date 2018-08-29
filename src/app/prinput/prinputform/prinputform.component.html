@@ -1,93 +1,115 @@
 <form>
-  <div class="row">
-    <!-- 1st column -->
-    <div class="col-xs-2 form-group">
-      <label for="prno">PR.No</label>
-      <div class="input-group">
-        <span class="input-group-addon" id="basic-addon1">PR-</span>
-        <input class="form-control" type="text" id="prno" tabindex="1" maxlength="9" aria-describedby="basic-addon1" #prnumber>
+  .
+  <div class="container">
+
+    <div class="row">
+      <div class="col-xs-8 form-group">
+        <div class="row">
+          <label for="prtype">Puchase Requisition Type : </label>
+          <input type="text">
+        </div>
+        <div class="row">
+          <label for="plat">Plant / Plant Description : </label>
+          <input type="text">
+        </div>
+        <div class="row">
+          <label for="businessarea">Business Area : </label>
+          <input type="text">
+        </div>
+        <div class="row">
+          <label for="profitCenter">Profit Center : </label>
+          <input type="text">
+        </div>
+        <div class="row">
+          <label for="requestby">Request By : </label>
+          <input type="text" id="">
+        </div>
       </div>
-      <hr>
-      <label for="price">Price</label>
-      <input type="number" class="form-control" id="price" tabindex="6" (keyup)="onKeyup($event)" #price>
-    </div>
-    <!-- 1st column -->
-
-    <!-- 2nd column -->
-    <div class="col-xs-2 form-group">
-      <label for="cost">Cost</label>
-      <input class="form-control" type="text" id="cost" tabindex="3" #glnumber>
-      <hr>
-      <div class="row">
-        <div class="col-xs-6 form-group">
-          <label for="qty">Qty</label>
-          <input type="number" class="form-control" id="qty" tabindex="7" maxlength="3" #qtynumber>
+      <div class="col-xs-4 form-group">
+        <div class="row">
+          <label for="prnumber">PR Number : </label>
+          <input type="text" id="">
         </div>
-        <div class="col-xs-4 form-group">
-          <label for="unit">Unit</label>
-          <div class="dropdown">
-            <button class="from-control btn btn-default dropdown-toggle" type="button" id="unit" data-toggle="dropdown" aria-haspopup="true"
-              aria-expanded="true" tabindex="8">
-              {{ unit }}
-              <span class="caret"></span>
-            </button>
-            <ul class="dropdown-menu" aria-labelledby="unit">
-              <li>
-                <a href="#" *ngFor="let _unit of units" (click)="unit = _unit.unit">{{ _unit.unit }}</a>
-              </li>
-            </ul>
-          </div>
+        <div class="row">
+          <label for="prdate">PR Date : </label>
+          <input type="text" id="">
         </div>
-
-      </div>
-    </div>
-    <!-- 2nd column -->
-
-    <!-- 3rd column -->
-    <div class="col-xs-2 form-group">
-      <label for="prdate">PR.Date</label>
-      <input class="form-control" type="date" id="prdate" tabindex="4" #prdate>
-      <hr>
-      <label for="unitprice">Unit Price</label>
-      <input disabled="true" type="number" class="form-control" id="unitprice" tabindex="9" #totalpricenumber>
-    </div>
-    <!-- 3rd column -->
-
-    <!-- 4th column -->
-    <div class="col-xs-6 form-group">
-      <label for="itemdesc">Item Description</label>
-      <input class="form-control" type="text" id="itemdesc" tabindex="5" #itemdescription>
-
-      <hr>
-      <div class="row">
-        <div class="col-xs-4 form-group">
-          <label for="supname">Supplier Name</label>
-          <div class="dropdown">
-            <button class="form-control btn btn-default dropdown-toggle" type="button" id="supname" data-toggle="dropdown" aria-haspopup="true"
-              aria-expanded="true" tabindex="10">{{ sup }}
-              <span class="caret"></span>
-            </button>
-            <ul class="dropdown-menu" aria-labelledby="supname">
-              <li>
-                <a href="#" *ngFor="let supplier of suppliers" (click)="sup = supplier.sp">{{ supplier.sp }}</a>
-              </li>
-            </ul>
-          </div>
-        </div>
-
-        <div class="col-xs-4 form-group">
-          <label for="duedate">Due Date</label>
-          <input type="date" class="form-control" id="duedate" tabindex="11" #duedate>
-        </div>
-        <div class="col-xs-4 form-group">
-          <label for="remark">Remark</label>
-          <input type="text" class="form-control" id="remark" tabindex="12" #remark>
+        <div class="row">
+          <label for="investNumver">Investment Number : </label>
+          <input type="text" id="">
         </div>
       </div>
     </div>
-    <!-- 4th column -->
+    <div class="row">
+      <div class="col-xs-12 form-group">
+        <table>
+          <tr>
+            <td><label for="itemdesc">Item Description : </label></td>
+            <td><label for="dlvdate">Dlv. Date : </label></td>
+            <td><label for="quantity">Quantity : </label></td>
+            <td><label for="unit">Unit</label></td>
+            <td><label for="unitprice">Unit Price</label></td>
+            <td><label for="supname">Supplier Name</label></td>
+          <tr>
+            <td>
+              
+              <input type="text" id="itemdesc" tabindex="5" #itemdescription>
+            </td>
+            <td>
+              
+              <input type="date" id="dlvdate" tabindex="5" #itemdescription>
+            </td>
+            <td>
+              
+              <input type="number" id="quantity" tabindex="5" #itemdescription>
+            </td>
+            <td>
+              
+              <div class="dropdown">
+                <button #unitbutton class="from-control btn btn-default dropdown-toggle" type="button" id="unit" data-toggle="dropdown" aria-haspopup="true"
+                  aria-expanded="true" tabindex="8">
+                  {{ unit }}
+                  <span class="caret"></span>
+                </button>
+                <ul class="dropdown-menu" aria-labelledby="unit">
+                  <li>
+                    <a href="#" *ngFor="let _unit of units" (click)="unit = _unit.unit">{{ _unit.unit }}</a>
+                  </li>
+                </ul>
+              </div>
+            </td>
+            <td>
+              
+              <input disabled="true" type="number" class="form-control" id="unitprice" tabindex="9" #totalpricenumber>
+
+            </td>
+            <td>
+
+            </td>
+            <td>
+              
+              <div class="dropdown">
+                <button #supplierbutton class="btn btn-default dropdown-toggle" type="button" id="supname" data-toggle="dropdown"
+                  aria-haspopup="true" aria-expanded="true" tabindex="10">{{ sup }}
+                  <span class="caret"></span>
+                </button>
+                <ul class="dropdown-menu" aria-labelledby="supname">
+                  <li>
+                    <a href="#" *ngFor="let supplier of suppliers" (click)="sup = supplier.sp">{{ supplier.sp }}</a>
+                  </li>
+                </ul>
+              </div>
+            </td>
+          </tr>
+        </table>
+
+
+      </div>
+
+    </div>
 
   </div>
+
   <div class="row">
     <div class="col-xs-12">
       <button class="btn btn-primary" type="submit" (click)="itemAdded()">Save</button>
