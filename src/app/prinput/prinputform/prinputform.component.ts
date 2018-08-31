@@ -1,6 +1,6 @@
 import { Component, OnInit, EventEmitter, Output, ViewChild, ElementRef } from '@angular/core';
 import { PrinputdataModel } from '../../shared/pr.model';
-import { Months, Suppliers, Units, CostCenters } from '../../shared/templete.model';
+import { Months, Suppliers, Units, CostCenters, Currencies, Plants } from '../../shared/templete.model';
 
 // For Example in case of use Directive //
 // @Directive({
@@ -54,6 +54,8 @@ export class PrinputformComponent implements OnInit {
   units = Units;
   suppliers = Suppliers;
   costcenters = CostCenters;
+  currencies = Currencies;
+  plants = Plants;
   costcenter = '';
   mon = ''; // Month
   unit = ''; // Unit

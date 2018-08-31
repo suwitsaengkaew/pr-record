@@ -1,4 +1,20 @@
-import { MonthModel, GLCostModel, UnitsModel, SuppliersModel, CostCenter } from './pr.model';
+import {
+    MonthModel,
+    GLCostModel,
+    UnitsModel,
+    SuppliersModel,
+    CostCenter,
+    CurrenciesModel,
+    PlantModel
+} from './pr.model';
+
+export const  Plants: PlantModel[] = [
+    { plantNo: 1, plantName: 'TBS' },
+    { plantNo: 2, plantName: 'PC/LT' },
+    { plantNo: 3, plantName: 'Sunari' },
+    { plantNo: 4, plantName: 'TDCT' },
+    { plantNo: 5, plantName: 'TTCA' },
+];
 
 export const Months: MonthModel[] = [
     { no: '01', mon: 'January' },
@@ -13,6 +29,12 @@ export const Months: MonthModel[] = [
     { no: '10', mon: 'October' },
     { no: '11', mon: 'November' },
     { no: '12', mon: 'December' }
+];
+
+export const Currencies: CurrenciesModel[] = [
+    { no: 0, curr: 'THB' },
+    { no: 1, curr: 'US' },
+    { no: 2, curr: 'JPY'}
 ];
 
 export const GLs: GLCostModel[] = [

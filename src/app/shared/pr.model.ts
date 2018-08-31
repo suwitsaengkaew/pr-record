@@ -5,9 +5,23 @@ export class MonthModel {
     ) {}
 }
 
+export class PlantModel {
+    constructor (
+        public plantNo: number,
+        public plantName: string
+    ) {}
+}
+
 export class GLCostModel {
     constructor (
         public gl: string
+    ) {}
+}
+
+export class CurrenciesModel {
+    constructor(
+        public no: number,
+        public curr: string
     ) {}
 }
 
