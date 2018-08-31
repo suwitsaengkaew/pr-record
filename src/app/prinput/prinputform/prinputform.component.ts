@@ -1,6 +1,6 @@
 import { Component, OnInit, EventEmitter, Output, ViewChild, ElementRef } from '@angular/core';
 import { PrinputdataModel } from '../../shared/pr.model';
-import { Months, Suppliers, Units, CostCenters, Currencies, Plants } from '../../shared/templete.model';
+import { Months, Suppliers, Units, CostCenters, Currencies, Plants, Investments, BuzAreas, Requestbys } from '../../shared/templete.model';
 
 // For Example in case of use Directive //
 // @Directive({
@@ -27,28 +27,28 @@ export class PrinputformComponent implements OnInit {
   @Output() ServiceClick = new EventEmitter<String>();
 
   // Column 1
-  @ViewChild('prnumber') prnumber: ElementRef;
-  @ViewChild('price') unitprice: ElementRef;
+  @ViewChild('prtype') prtype: ElementRef;
+  @ViewChild('plant') plant: ElementRef;
+  @ViewChild('buzarea') buzarea: ElementRef;
+  @ViewChild('profit') profit: ElementRef;
+  @ViewChild('requestby') requestby: ElementRef;
   // Column 1
 
   // Column 2
-  @ViewChild('costcenterbutton') costcenterbutton: ElementRef;
-  @ViewChild('unitbutton') unitbutton: ElementRef;
-  @ViewChild('glnumber') glnumber: ElementRef;
-  @ViewChild('qtynumber') qtynumber: ElementRef;
+  @ViewChild('prnumber') prnumber: ElementRef;
+  @ViewChild('prdate') prdate: ElementRef;
+  @ViewChild('dlvdate') dlvdate: ElementRef;
+  @ViewChild('invnumber') invnumber: ElementRef;
+  @ViewChild('suppliername') suppliername: ElementRef;
   // Column 2
 
   // Column 3
-  @ViewChild('prdate') prdate: ElementRef;
-  @ViewChild('totalpricenumber') amountprice: ElementRef;
+  @ViewChild('desc') desc: ElementRef;
+  @ViewChild('qty') qty: ElementRef;
+  @ViewChild('unit') unit: ElementRef;
+  @ViewChild('unitprice') unitprice: ElementRef;
+  @ViewChild('currency') currency: ElementRef;
   // Column 3
-
-  // Column 4
-  @ViewChild('itemdescription') itemdescription: ElementRef;
-  @ViewChild('supplierbutton') supplierbutton: ElementRef;
-  @ViewChild('duedate') duedate: ElementRef;
-  @ViewChild('remark') remark: ElementRef;
-  // Column 4
 
   months = Months;
   units = Units;
@@ -56,34 +56,33 @@ export class PrinputformComponent implements OnInit {
   costcenters = CostCenters;
   currencies = Currencies;
   plants = Plants;
-  costcenter = '';
-  mon = ''; // Month
-  unit = ''; // Unit
-  sup = '';  // Supplier Name
+  investments = Investments;
+  buzares = BuzAreas;
+  requestbys = Requestbys;
 
   constructor(
-  ) {
-    this.mon = 'Month';
-    this.unit = 'Unit';
-    this.sup = 'Supplier';
-    this.costcenter = 'Cost Center';
-   }
+  ) {}
 
   ngOnInit() {
   }
 
   itemAdded() {
-    const _prnumber = this.prnumber.nativeElement.value;
-    const _costcenter = this.costcenter;
-    const _glnumber = this.glnumber.nativeElement.value;
-    const _prdate = this.prdate.nativeElement.value;
-    const _itemdescription = this.itemdescription.nativeElement.value;
-    const _unitprice = this.unitprice.nativeElement.value;
-    const _qty = this.qtynumber.nativeElement.value;
-    const _unit = this.unit;
-    const _amountprice = this.amountprice.nativeElement.value;
-    const _suppliername = this.sup;
-    const _duedate = this.duedate.nativeElement.value;
+    console.log(this.prtype.nativeElement.value);
+    console.log(this.plant.nativeElement.value);
+    console.log(this.buzarea.nativeElement.value);
+    console.log(this.profit.nativeElement.value);
+    console.log(this.requestby.nativeElement.value);
+    // const _prnumber = this.prnumber.nativeElement.value;
+    // const _costcenter = this.costcenter;
+    // const _glnumber = this.glnumber.nativeElement.value;
+    // const _prdate = this.prdate.nativeElement.value;
+    // const _itemdescription = this.itemdescription.nativeElement.value;
+    // const _unitprice = this.unitprice.nativeElement.value;
+    // const _qty = this.qtynumber.nativeElement.value;
+    // const _unit = this.unit;
+    // const _amountprice = this.amountprice.nativeElement.value;
+    // const _suppliername = this.sup;
+    // const _duedate = this.duedate.nativeElement.value;
 
     // if (_prnumber.length !== 9 ) { // PR Number
     //   alert('Please check PR Number!!');
@@ -116,20 +115,20 @@ export class PrinputformComponent implements OnInit {
     //     alert('Please input PR Issue Date!!');
     //     this.duedate.nativeElement.focus();
     // } else {
-      this.onInputPrData.emit({
-        prno: 'PR' + this.prnumber.nativeElement.value,
-        costcenter: this.costcenter,
-        glcost: this.glnumber.nativeElement.value,
-        prdate: this.prdate.nativeElement.value,
-        itemdesc: this.itemdescription.nativeElement.value,
-        unitprice: this.unitprice.nativeElement.value,
-        qty: this.qtynumber.nativeElement.value,
-        unit: this.unit,
-        amountprice: this.amountprice.nativeElement.value,
-        suppliername: this.sup,
-        duedate: this.duedate.nativeElement.value,
-        remark: this.remark.nativeElement.value
-      });
+    //  this.onInputPrData.emit({
+        // prno: 'PR' + this.prnumber.nativeElement.value,
+        // costcenter: this.costcenter,
+        // glcost: this.glnumber.nativeElement.value,
+        // prdate: this.prdate.nativeElement.value,
+        // itemdesc: this.itemdescription.nativeElement.value,
+        // unitprice: this.unitprice.nativeElement.value,
+        // qty: this.qtynumber.nativeElement.value,
+        // unit: this.unit,
+        // amountprice: this.amountprice.nativeElement.value,
+        // suppliername: this.sup,
+        // duedate: this.duedate.nativeElement.value,
+        // remark: this.remark.nativeElement.value
+    //  });
     // }
   }
 
@@ -137,7 +136,7 @@ export class PrinputformComponent implements OnInit {
     // console.log((<HTMLInputElement>event.target).value);
     if (event.target.value.length !== 0) {
       // console.log(this.price.nativeElement.value);
-      this.amountprice.nativeElement.value = this.unitprice.nativeElement.value * this.qtynumber.nativeElement.value;
+      // this.amountprice.nativeElement.value = this.unitprice.nativeElement.value * this.qtynumber.nativeElement.value;
     }
 
   }

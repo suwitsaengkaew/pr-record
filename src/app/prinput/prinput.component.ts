@@ -27,20 +27,20 @@ export class PrinputComponent implements OnInit {
   }
 
   itemPrAdded(event: PrinputdataModel) {
-    this.service.helloWorld(event)
-    .toPromise()
-    .then(
-      status => {
-        const _state = JSON.parse(status.text());
-        if ( (_state[0]['notice']['text']) === 'Added' ) {
-          this.prinputdatas.push(event);
-        }
-      })
-      .catch(
-        err => {
-          console.log('Err -> ', err);
-        }
-      );
+    // this.service.helloWorld(event)
+    // .toPromise()
+    // .then(
+    //   status => {
+    //     const _state = JSON.parse(status.text());
+    //     if ( (_state[0]['notice']['text']) === 'Added' ) {
+    //       this.prinputdatas.push(event);
+    //     }
+    //   })
+    //   .catch(
+    //     err => {
+    //       console.log('Err -> ', err);
+    //     }
+    //   );
   }
 
 

@@ -5,6 +5,33 @@ export class MonthModel {
     ) {}
 }
 
+export class RequestbyModel {
+    constructor (
+        public id: string,
+        public requestName: string
+    ) {}
+}
+
+export class BuzAreaModel {
+    constructor (
+        public buzarea: string
+    ) {}
+}
+
+export class CostCenterModel {
+    constructor (
+        public costCtr: string,
+        public costCtrName: string
+    ) {}
+}
+
+export class InvestmentModel {
+    constructor (
+        public invNo: number,
+        public invName: string
+    ) {}
+}
+
 export class PlantModel {
     constructor (
         public plantNo: number,
