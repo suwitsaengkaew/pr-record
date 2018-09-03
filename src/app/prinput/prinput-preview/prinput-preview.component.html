@@ -1,4 +1,5 @@
 <div class="table-responsive">
+  {{ prinputdatas | json}}
   <table class="table table-bordered table-hover">
     <thead>
       <tr>
@@ -18,7 +19,7 @@
     </thead>
     <tbody>
       <tr *ngFor="let prinputdata of prinputdatas">
-        <td>{{ prinputdata.prno }}</td>
+        <!-- <td>{{ prinputdata.prno }}</td>
         <td>{{ prinputdata.costcenter }}</td>
         <td>{{ prinputdata.glcost }}</td>
         <td>{{ prinputdata.prdate }}</td>
@@ -29,8 +30,7 @@
         <td>{{ prinputdata.amountprice }}</td>
         <td>{{ prinputdata.suppliername }}</td>
         <td>{{ prinputdata.duedate }}</td>
-        <td>{{ prinputdata.remark }}
-        </td>
+        <td>{{ prinputdata.remark }}</td> -->
       </tr>
     </tbody>
   </table>

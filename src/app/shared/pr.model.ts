@@ -67,22 +67,27 @@ export class SuppliersModel {
 export class CostCenter {
     constructor(
         public costcenter: string
-    ){}
+    ) {}
 }
 
 export class PrinputdataModel {
     constructor(
-        public prno: string,
-        public costcenter: string,
-        public glcost: string,
+        public prtype: string,
+        public prplant: string,
+        public prbuzarea: string,
+        public prprofitarea: string,
+        public prrequestby: string,
+        public prnumber: string,
         public prdate: string,
-        public itemdesc: string,
-        public unitprice: number,
-        public qty: number,
-        public unit: string,
-        public amountprice: number,
-        public suppliername: string,
-        public duedate: string,
-        public remark: string
+        public prdlvdate: string,
+        public prinvnumber: string,
+        public prsuppliername: string,
+        public pritemdesc: string,
+        public prqty: number,
+        public prunit: string,
+        public prunitprice: number,
+        public prtotalprice: number,
+        public prcurrency: string,
+        public prremark: string
     ) {}
 }

@@ -15,6 +15,9 @@ export class PurchaseOrderService {
 
     helloWorld(prinputdata: PrinputdataModel) {
         const _Url = this.Url + 'pr/prinputrecord';
-        return this.http.put(_Url, JSON.stringify(prinputdata));
+        // return this.http.put(_Url, JSON.stringify(prinputdata), { headers : this.headers });
+        console.log(JSON.stringify(prinputdata).toString());
+        console.log(JSON.stringify(prinputdata));
+        return this.http.put(_Url, JSON.stringify(prinputdata).toString());
     }
 }

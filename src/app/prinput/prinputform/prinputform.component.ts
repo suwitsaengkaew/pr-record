@@ -67,22 +67,22 @@ export class PrinputformComponent implements OnInit {
   }
 
   itemAdded() {
-    console.log(this.prtype.nativeElement.value);
-    console.log(this.plant.nativeElement.value);
-    console.log(this.buzarea.nativeElement.value);
-    console.log(this.profit.nativeElement.value);
-    console.log(this.requestby.nativeElement.value);
-    // const _prnumber = this.prnumber.nativeElement.value;
-    // const _costcenter = this.costcenter;
-    // const _glnumber = this.glnumber.nativeElement.value;
-    // const _prdate = this.prdate.nativeElement.value;
-    // const _itemdescription = this.itemdescription.nativeElement.value;
-    // const _unitprice = this.unitprice.nativeElement.value;
-    // const _qty = this.qtynumber.nativeElement.value;
-    // const _unit = this.unit;
-    // const _amountprice = this.amountprice.nativeElement.value;
-    // const _suppliername = this.sup;
-    // const _duedate = this.duedate.nativeElement.value;
+    const _prtype = this.prtype.nativeElement.value;
+    const _plant = this.plant.nativeElement.value;
+    const _buzarea = this.buzarea.nativeElement.value;
+    const _profit = this.profit.nativeElement.value;
+    const _requestby = this.requestby.nativeElement.value;
+    const _prnumber = this.prnumber.nativeElement.value;
+    const _prdate = this.prdate.nativeElement.value;
+    const _dlvdate = this.dlvdate.nativeElement.value;
+    const _invnumber = this.invnumber.nativeElement.value;
+    const _suppliername = this.suppliername.nativeElement.value;
+    const _desc = this.desc.nativeElement.value;
+    const _qty = this.qty.nativeElement.value;
+    const _unit = this.unit.nativeElement.value;
+    const _unitprice = this.unitprice.nativeElement.value;
+    const _currency = this.currency.nativeElement.value;
+
 
     // if (_prnumber.length !== 9 ) { // PR Number
     //   alert('Please check PR Number!!');
@@ -115,20 +115,25 @@ export class PrinputformComponent implements OnInit {
     //     alert('Please input PR Issue Date!!');
     //     this.duedate.nativeElement.focus();
     // } else {
-    //  this.onInputPrData.emit({
-        // prno: 'PR' + this.prnumber.nativeElement.value,
-        // costcenter: this.costcenter,
-        // glcost: this.glnumber.nativeElement.value,
-        // prdate: this.prdate.nativeElement.value,
-        // itemdesc: this.itemdescription.nativeElement.value,
-        // unitprice: this.unitprice.nativeElement.value,
-        // qty: this.qtynumber.nativeElement.value,
-        // unit: this.unit,
-        // amountprice: this.amountprice.nativeElement.value,
-        // suppliername: this.sup,
-        // duedate: this.duedate.nativeElement.value,
-        // remark: this.remark.nativeElement.value
-    //  });
+     this.onInputPrData.emit({
+        prtype: _prtype,
+        prplant: _plant,
+        prbuzarea: _buzarea,
+        prprofitarea: _profit,
+        prrequestby: _requestby,
+        prnumber: _prnumber,
+        prdate: _prdate,
+        prdlvdate: _dlvdate,
+        prinvnumber: _invnumber,
+        prsuppliername: _suppliername,
+        pritemdesc: _desc,
+        prqty: _qty,
+        prunit: _unit,
+        prunitprice: _unitprice,
+        prtotalprice: 3000,
+        prcurrency: _currency,
+        prremark: 'remark'
+     });
     // }
   }
 
