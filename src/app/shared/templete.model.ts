@@ -13,53 +13,23 @@ import {
 } from './pr.model';
 
 export const Requestbys: RequestbyModel[] = [
-    { id: 'RP06027', requestName: 'Suwit Saengkaew' }
+    { id: '', requestName: '' },
+    { id: 'RP06027', requestName: 'Suwit.S' },
+    { id: 'RP13074', requestName: 'Wuchareeporn.L' },
+    { id: 'RP14068', requestName: 'Kessarin.P' }
 ];
 
 export const BuzAreas: BuzAreaModel[] = [
-    { buzarea: '' },
-    { buzarea: '1-B' },
-    { buzarea: '2-B' },
-    { buzarea: '3-B' },
-    { buzarea: '4-B' }
+    { buzareano: '', buzarea: '' },
+    { buzareano: '1-B', buzarea: 'TBS' },
+    { buzareano: '2-B', buzarea: 'PC/LT' },
+    { buzareano: '3-B', buzarea: 'Sunari' },
+    { buzareano: '4-B', buzarea: 'TTCA' }
 ];
 
 export const CostCenters: CostCenterModel[] = [
-    { costCtr: '1P-210-00', costCtrName: 'TBS_HR&ADMIN. ADMI' },
-    { costCtr: '1P-210-01', costCtrName: 'TBS_HR&ADMIN. FACT' },
-    { costCtr: '1P-220-00', costCtrName: 'TBS_FA (ADMIN)' },
-    { costCtr: '1P-220-01', costCtrName: 'TBS_FA (FACTORY)' },
-    { costCtr: '1P-230-00', costCtrName: 'TBS_PURCHASE' },
-    { costCtr: '1P-310-00', costCtrName: 'TBS_SAFETY&ENV ADM' },
-    { costCtr: '1P-310-01', costCtrName: 'TBS_SAFETY&ENV FACT' },
-    { costCtr: '1P-320-00', costCtrName: 'TBS_PLANT CNTL ADM' },
-    { costCtr: '1P-320-01', costCtrName: 'TBS_PLANT CNTL FACT' },
-    { costCtr: '1P-320-02', costCtrName: 'TBS_RAW MATERIAL' },
-    { costCtr: '1P-320-03', costCtrName: 'TBS_F/G WH ADMIN' },
-    { costCtr: '1P-320-04', costCtrName: 'TBS_SHIPPING ADMIN' },
-    { costCtr: '1P-320-05', costCtrName: 'TBS_IT (ADMIN)' },
-    { costCtr: '1P-320-06', costCtrName: 'TBS_IT (FACTORY)' },
-    { costCtr: '1P-320-09', costCtrName: 'TBS_INDUST ENGIN ADM' },
-    { costCtr: '1P-320-11', costCtrName: 'TBS_F/G WH FACTORY' },
-    { costCtr: '1P-330-00', costCtrName: 'TBS_M1- CENTER' },
-    { costCtr: '1P-330-01', costCtrName: 'TBS_M1- MIXING' },
-    { costCtr: '1P-330-02', costCtrName: 'TBS_M1- STEEL CALEND' },
-    { costCtr: '1P-330-03', costCtrName: 'TBS_M1- EXTRUDING, I' },
-    { costCtr: '1P-330-04', costCtrName: 'TBS_M1- CUTTING & BE' },
-    { costCtr: '1P-330-06', costCtrName: 'TBS_M1- BEAD_SELF' },
-    { costCtr: '1P-340-00', costCtrName: 'TBS_M2- CENTER' },
-    { costCtr: '1P-340-01', costCtrName: 'TBS_M2- BUILDING' },
-    { costCtr: '1P-340-02', costCtrName: 'TBS_M2- CURING, MOLD' },
-    { costCtr: '1P-340-03', costCtrName: 'TBS_M2- FINISHING' },
-    { costCtr: '1P-350-01', costCtrName: 'TBS_ME- ELECTRICAL' },
-    { costCtr: '1P-350-02', costCtrName: 'TBS_ME- MECHANICAL' },
-    { costCtr: '1P-350-03', costCtrName: 'TBS_ME- UTILITIES' },
-    { costCtr: '1P-360-00', costCtrName: 'TBS_HEAD QA' },
-    { costCtr: '1P-370-00', costCtrName: 'TBS_QT- CENTER' },
-    { costCtr: '1P-370-01', costCtrName: 'TBS_QT- QA' },
-    { costCtr: '1P-370-02', costCtrName: 'TBS_QT- TECHNOLOGY' },
-    { costCtr: '1P-380-00', costCtrName: 'TBS_MONODZUKURI ADM' },
-    { costCtr: '1P-380-01', costCtrName: 'TBS_MONODZUKURI FAC' }
+    { costCtr: '', costCtrName: '' },
+    
 ];
 
 export const Investments: InvestmentModel[] = [
@@ -69,11 +39,11 @@ export const Investments: InvestmentModel[] = [
 ];
 
 export const Plants: PlantModel[] = [
-    { plantNo: 1, plantName: 'TBS' },
-    { plantNo: 2, plantName: 'PC/LT' },
-    { plantNo: 3, plantName: 'Sunari' },
-    { plantNo: 4, plantName: 'TDCT' },
-    { plantNo: 5, plantName: 'TTCA' },
+    { plantNo: '', plantName: '' },
+    { plantNo: 'RP01', plantName: 'TBS' },
+    { plantNo: 'RP02', plantName: 'PC/LT' },
+    { plantNo: 'RP03', plantName: 'Sunari' },
+    { plantNo: 'RP04', plantName: 'TTCA' },
 ];
 
 export const Months: MonthModel[] = [
@@ -92,12 +62,14 @@ export const Months: MonthModel[] = [
 ];
 
 export const Currencies: CurrenciesModel[] = [
-    { no: 0, curr: 'THB' },
-    { no: 1, curr: 'US' },
-    { no: 2, curr: 'JPY' }
+    { no: 0, curr: '' },
+    { no: 1, curr: 'THB' },
+    { no: 2, curr: 'US' },
+    { no: 3, curr: 'JPY' }
 ];
 
 export const GLs: GLCostModel[] = [
+    { gl: '' },
     { gl: '5450354' },
     { gl: '5551350' },
     { gl: '5551351' },
@@ -108,6 +80,7 @@ export const GLs: GLCostModel[] = [
 ];
 
 export const Units: UnitsModel[] = [
+    { unit: '' },
     { unit: 'BOX' },
     { unit: 'ROLL' },
     { unit: 'EA' },
@@ -117,6 +90,7 @@ export const Units: UnitsModel[] = [
 ];
 
 export const Suppliers: SuppliersModel[] = [
+    { sp: '' },
     { sp: 'Accept Tech' },
     { sp: 'Advance IT' },
     { sp: 'B&M' },

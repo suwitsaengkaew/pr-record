@@ -7,7 +7,7 @@
         <div class="input-group" style="margin-top: 5px;">
           <span class="input-group-addon" style="width: 150px; text-align: right;" id="basic-prtype">PR Type :
           </span>
-          <select #prtype class="form-control input-sm" aria-describedby="basic-prtype" id="prtype" style="width: 200px;" tabindex="1">
+          <select #prtype class="form-control input-sm" (change)="onChange($event.target.id)" aria-describedby="basic-prtype" id="prtype" style="width: 200px;" tabindex="1">
             <option *ngFor="let investment of investments">{{ investment.invName }}</option>
           </select>
         </div>
@@ -15,29 +15,29 @@
         <div class="input-group" style="margin-top: 5px;">
           <span class="input-group-addon" style="width: 150px; text-align: right;" id="basic-plant">PR Plant :
           </span>
-          <select #plant class="form-control input-sm" aria-describedby="basic-plant" id="plant" style="width: 200px;" tabindex="2">
-            <option value="{{plant.plantNo}}" *ngFor="let plant of plants">{{ plant.plantName }}</option>
+          <select #plant class="form-control input-sm" (change)="onChange($event.target.id)" aria-describedby="basic-plant" id="plant" style="width: 200px;" tabindex="2">
+            <option value="{{ plant.plantNo }}" *ngFor="let plant of plants">{{ plant.plantNo }} {{ plant.plantName }}</option>
           </select>
         </div>
         <!-- Business Area -->
         <div class="input-group" style="margin-top: 5px;">
           <span class="input-group-addon" style="width: 150px; text-align: right;" id="basic-buzarea">Business Area : </span>
-          <select #buzarea class="form-control input-sm" aria-describedby="basic-buzarea" id="buzarea" style="width: 200px;" tabindex="3">
-            <option *ngFor="let buz of buzares">{{ buz.buzarea }}</option>
+          <select #buzarea class="form-control input-sm" (change)="onChange($event.target.id)" aria-describedby="basic-buzarea" id="buzarea" style="width: 200px;" tabindex="3">
+            <option value="{{ buz.buzareano }}" *ngFor="let buz of buzares">{{ buz.buzareano }} {{ buz.buzarea }}</option>
           </select>
         </div>
         <!-- Profit Center -->
         <div class="input-group" style="margin-top: 5px;">
           <span class="input-group-addon" style="width: 150px; text-align: right;" id="basic-profitcenter">Profit Center
             : </span>
-          <select #profit class="form-control input-sm" aria-describedby="basic-profitcenter" id="profitcenter" style="width: 200px;" tabindex="4">
-            <option *ngFor="let costcenter of costcenters">{{costcenter.costCtr}}({{costcenter.costCtrName}})</option>
+          <select #profit class="form-control input-sm" (change)="onChange($event.target.id)" aria-describedby="basic-profitcenter" id="profitcenter" style="width: 200px;" tabindex="4">
+            <option *ngFor="let costcenter of costcenters">{{costcenter.costCtr}} {{costcenter.costCtrName}}</option>
           </select>
         </div>
         <!-- Request by -->
         <div class="input-group" style="margin-top: 5px;">
           <span class="input-group-addon" style="width: 150px; text-align: right;" id="basic-requestby">Request By : </span>
-          <select #requestby class="form-control input-sm" aria-describedby="basic-requestby" id="requestby" style="width: 200px;" tabindex="5">
+          <select #requestby class="form-control input-sm" (change)="onChange($event.target.id)" aria-describedby="basic-requestby" id="requestby" style="width: 200px;" tabindex="5">
             <option value="{{req.id}}" *ngFor="let req of requestbys">{{req.requestName}}</option>
           </select>
         </div>
@@ -48,29 +48,30 @@
         <div class="input-group" style="margin-top: 5px;">
           <span class="input-group-addon" style="width: 150px; text-align: right;" id="basic-prnumber">PR Number :
           </span>
-          <input #prnumber id="prnumber" type="text" style="width: 200px;" class="form-control input-sm" aria-describedby="basic-prnumber" tabindex="6">
+          <input #prnumber id="prnumber" type="text" style="width: 200px;" (onkeyup)="OnKeyUp($event.target.id)" class="form-control input-sm" aria-describedby="basic-prnumber" tabindex="6">
         </div>
         <div class="input-group" style="margin-top: 5px;">
           <!-- PR Date -->
           <span class="input-group-addon" style="width: 150px; text-align: right;" id="basic-prdate">PR Date : </span>
-          <input #prdate id="prdate" type="date" style="width: 200px;" class="form-control input-sm" aria-describedby="basic-prdate" tabindex="7">
+          <!-- <input #prdate id="prdate" type="date" style="width: 200px;" (onchange)="onClick($event)" class="form-control input-sm" aria-describedby="basic-prdate" tabindex="7"> -->
+          <input #prdate id="prdate" type="date" style="width: 200px;" class="form-control input-sm" aria-describedby="basic-prdate" tabindex="7" [ngModel]="prdateModel | date:'yyyy-MM-dd'" (ngModelChange)="onCheckprDate($event);" [ngModelOptions]="{standalone: true}">
         </div>
         <div class="input-group" style="margin-top: 5px;">
           <!-- Dlv Date -->
           <span class="input-group-addon" style="width: 150px; text-align: right;" id="basic-dlvdate">Dlv Date : </span>
-          <input #dlvdate class="form-control input-sm" style="width: 200px;" id="dlvdate" type="date" aria-describedby="basic-dlvdate" tabindex="8">
+          <input #dlvdate class="form-control input-sm" style="width: 200px;" id="dlvdate" type="date" aria-describedby="basic-dlvdate" tabindex="8" [ngModel]="dlvdateModel | date:'yyyy-MM-dd'" (ngModelChange)="onCheckDlvDate($event);" [ngModelOptions]="{standalone: true}">
         </div>
         <div class="input-group" style="margin-top: 5px;">
           <!-- Investment Number -->
           <span class="input-group-addon" style="width: 150px; text-align: right;" id="basic-prinvnumber">Inv No :
           </span>
-          <input #invnumber id="prinvnumber" type="text" style="width: 200px;" class="form-control input-sm" aria-describedby="basic-prinvnumber" tabindex="9">
+          <input #invnumber id="prinvnumber" type="text" style="width: 200px;" (onkeyup)="OnKeyUp($event.target.id)" class="form-control input-sm" aria-describedby="basic-prinvnumber" tabindex="9">
         </div>
         <div class="input-group" style="margin-top: 5px;">
           <!-- Supplier Name -->
           <span class="input-group-addon" style="width: 150px; text-align: right;" id="basic-suppliername">Supplier :
           </span>
-          <select #suppliername class="form-control input-sm" aria-describedby="basic-suppliername" id="suppliername" style="width: 200px;" tabindex="10">
+          <select #suppliername class="form-control input-sm" (change)="onChange($event.target.id)" aria-describedby="basic-suppliername" id="suppliername" style="width: 200px;" tabindex="10">
             <option *ngFor="let supplier of suppliers">{{ supplier.sp }}</option>
           </select>
         </div>
@@ -80,25 +81,25 @@
         <!-- Description -->
         <div class="input-group" style="margin-top: 5px;">
           <span class="input-group-addon" style="width: 150px; text-align: right;" id="basic-desc">Desc:</span>
-          <input #desc id="desc" class="form-control input-sm" type="text" style="width: 200px;" aria-describedby="basic-desc" tabindex="11">
+          <input #desc id="desc" class="form-control input-sm" (onkeyup)="OnKeyUp($event.target.id)" type="text" style="width: 200px;" aria-describedby="basic-desc" tabindex="11">
         </div>
         <!-- Quantity -->
         <div class="input-group" style="margin-top: 5px;">
           <span class="input-group-addon" style="width: 150px; text-align: right;" id="basic-qty">Qty:</span>
-          <input #qty id="qty" class="form-control input-sm" type="number" style="width: 200px;" maxlength="3" aria-describedby="basic-qty" tabindex="12">
+          <input #qty id="qty" class="form-control input-sm" type="number" (onkeyup)="OnKeyUp($event.target.id)" style="width: 200px;" maxlength="3" aria-describedby="basic-qty" tabindex="12">
         </div>
         <!-- Unit -->
         <div class="input-group" style="margin-top: 5px;">
           <span class="input-group-addon" style="width: 150px; text-align: right;" id="basic-unit">Unit :
           </span>
-          <select #unit class="form-control input-sm" aria-describedby="basic-unit" id="unit" style="width: 200px;" tabindex="13">
+          <select #unit class="form-control input-sm" (change)="onChange($event.target.id)" aria-describedby="basic-unit" id="unit" style="width: 200px;" tabindex="13">
             <option *ngFor="let unit of units">{{ unit.unit }}</option>
           </select>
         </div>
         <!-- Unit Price -->
         <div class="input-group" style="margin-top: 5px;">
           <span class="input-group-addon" style="width: 150px; text-align: right;" id="basic-unitprice">Unit Price :</span>
-          <input #unitprice id="unitprice" class="form-control input-sm" type="number" style="width: 200px;" aria-describedby="basic-unitprice" tabindex="14">
+          <input #unitprice id="unitprice" class="form-control input-sm" (change)="onChange($event.target.id)" type="number" style="width: 200px;" aria-describedby="basic-unitprice" tabindex="14">
         </div>
         <!-- Currency -->
         <div class="input-group" style="margin-top: 5px;">
@@ -107,15 +108,27 @@
           <select #currency class="form-control input-sm"
           aria-describedby="basic-curr"
           id="curr" style="width: 200px;"
+          (change)="onChange($event.target.id)"
           tabindex="15">
             <option *ngFor="let currency of currencies" [value]="currency.no">{{ currency.curr }}</option>
           </select>
         </div>
-        <div>
-          <button class="btn btn-primary" style="margin-top: 5px; width: 173px;" type="submit" (click)="itemAdded()" tabindex="16">Save</button>
-          <button class="btn btn-default" style="margin-top: 5px; width: 173px;">Cancel</button>
-      
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-4">
+
+      </div>
+      <div class="col-sm-4">
+        <!-- Remark -->
+        <div class="input-group" style="margin-top: 5px;">
+          <span class="input-group-addon" style="width: 150px; text-align: right;" id="basic-remark">Remark :</span>
+          <input #prremark type="text" id="prremark" class="form-control input-sm" style="width: 200px;" aria-describedby="basic-remark" tabindex="16">
         </div>
+      </div>
+      <div class="col-sm-4">
+          <button class="btn btn-primary" style="margin-top: 5px; width: 173px;" type="submit" (click)="itemAdded()" tabindex="17">Save</button>
+          <button class="btn btn-default" style="margin-top: 5px; width: 173px;">Cancel</button>
       </div>
     </div>
   </form>

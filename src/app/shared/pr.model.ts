@@ -14,6 +14,7 @@ export class RequestbyModel {
 
 export class BuzAreaModel {
     constructor (
+        public buzareano: string,
         public buzarea: string
     ) {}
 }
@@ -34,7 +35,7 @@ export class InvestmentModel {
 
 export class PlantModel {
     constructor (
-        public plantNo: number,
+        public plantNo: string,
         public plantName: string
     ) {}
 }
