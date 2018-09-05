@@ -261,6 +261,7 @@ export const Suppliers: SuppliersModel[] = [
     { sp: 'BT Connect' },
     { sp: 'Catalog System' },
     { sp: 'CCM System' },
+    { sp: 'Chiyoda Kohan' },
     { sp: 'EAC Eastern Air' },
     { sp: 'First Telecom System' },
     { sp: 'Fujitsu Thailand' },

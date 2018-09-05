@@ -31,7 +31,7 @@
           <span class="input-group-addon" style="width: 150px; text-align: right;" id="basic-profitcenter">Profit Center
             : </span>
           <select #profit class="form-control input-sm" (change)="onChange($event.target.id)" aria-describedby="basic-profitcenter" id="profitcenter" style="width: 200px;" tabindex="4">
-            <option *ngFor="let costcenter of costcenters">{{costcenter.costCtr}} {{costcenter.costCtrName}}</option>
+            <option value="{{costcenter.costCtr}}" *ngFor="let costcenter of costcenters">{{costcenter.costCtr}} {{costcenter.costCtrName}}</option>
           </select>
         </div>
         <!-- Request by -->
