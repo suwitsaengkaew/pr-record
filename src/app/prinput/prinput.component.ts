@@ -3,6 +3,7 @@ import { PrinputdataModel } from '../shared/pr.model';
 
 // Service
 import { PurchaseOrderService } from '../services/pr.service';
+import { FirebaseService } from '../services/firebase.service';
 
 @Component({
   selector: 'app-prinput',
@@ -20,7 +21,8 @@ export class PrinputComponent implements OnInit {
   prinputdatas: PrinputdataModel[] = [];
 
   constructor(
-    private service: PurchaseOrderService
+    private service: PurchaseOrderService,
+    private firebaseservice: FirebaseService
   ) {}
 
   ngOnInit() {

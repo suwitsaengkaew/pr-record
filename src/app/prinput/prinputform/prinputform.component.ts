@@ -3,6 +3,7 @@ import { DatePipe } from '@angular/common';
 import { PrinputdataModel } from '../../shared/pr.model';
 import { Months, Suppliers, Units, CostCenters, Currencies, Plants, Investments, BuzAreas, Requestbys } from '../../shared/templete.model';
 import { TestingCompilerImpl } from '@angular/platform-browser-dynamic/testing/src/compiler_factory';
+import { FirebaseService } from '../../services/firebase.service';
 
 // For Example in case of use Directive //
 // @Directive({
@@ -65,10 +66,14 @@ export class PrinputformComponent implements OnInit {
   buzares = BuzAreas;
   requestbys = Requestbys;
 
-  constructor(
+  constructor(private firebaseservice: FirebaseService
   ) { }
 
   ngOnInit() {
+  }
+
+  onSavetoFirebase() {
+    this.firebaseservice.OnSave();
   }
 
   itemAdded() {

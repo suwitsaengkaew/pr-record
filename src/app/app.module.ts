@@ -12,6 +12,7 @@ import { PrinputformComponent } from './prinput/prinputform/prinputform.componen
 
 // Service
 import { PurchaseOrderService } from './services/pr.service';
+import { FirebaseService } from './services/firebase.service';
 
 @NgModule({
   declarations: [
@@ -28,7 +29,7 @@ import { PurchaseOrderService } from './services/pr.service';
     HttpModule
   ],
   providers: [
-    PurchaseOrderService
+    PurchaseOrderService, FirebaseService
   ],
   bootstrap: [AppComponent]
 })
