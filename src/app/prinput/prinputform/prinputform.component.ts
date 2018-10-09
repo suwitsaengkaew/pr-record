@@ -74,6 +74,7 @@ export class PrinputformComponent implements OnInit {
 
   onSavetoFirebase() {
     this.firebaseservice.OnSave();
+    this.firebaseservice.OnSaveSuppliers();
   }
 
   itemAdded() {
