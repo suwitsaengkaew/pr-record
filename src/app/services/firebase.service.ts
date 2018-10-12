@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Http, Headers, Response } from '@angular/http';
 import { CostCenters, Suppliers } from '../shared/templete.model';
+import { CostCenterModel } from '../shared/pr.model';
 
 @Injectable()
 export class FirebaseService {
@@ -24,6 +25,16 @@ export class FirebaseService {
         .subscribe(
             (response: Response) => {
                 console.log(response);
+            }
+        );
+    }
+
+    OngetCostCenter() {
+        this.http.get('https://exhe-gsuite.firebaseio.com/costcenter.json')
+        .map(
+            (response: Response) => {
+                const res: CostCenterModel[] = response.json();
+                console.log(res);
             }
         );
     }

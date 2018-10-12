@@ -25,6 +25,7 @@ export class PrinputComponent implements OnInit {
     private firebaseservice: FirebaseService
   ) {}
 
+  CostCenter = this.firebaseservice.OngetCostCenter();
   ngOnInit() {
   }
 

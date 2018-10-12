@@ -2,6 +2,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
+import { APP_BASE_HREF } from '@angular/common';
 
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './header/header.component';
@@ -29,7 +30,9 @@ import { FirebaseService } from './services/firebase.service';
     HttpModule
   ],
   providers: [
-    PurchaseOrderService, FirebaseService
+    {provide: APP_BASE_HREF, useValue: '/prrecord'},
+    PurchaseOrderService,
+    FirebaseService
   ],
   bootstrap: [AppComponent]
 })
