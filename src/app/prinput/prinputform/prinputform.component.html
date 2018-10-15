@@ -7,7 +7,7 @@
         <div class="input-group" style="margin-top: 5px;">
           <span class="input-group-addon" style="width: 150px; text-align: right;" id="basic-prtype">PR Type :
           </span>
-          <select #prtype class="form-control input-sm" (change)="onChange($event.target.id)" aria-describedby="basic-prtype" id="prtype" style="width: 200px;" tabindex="1">
+          <select #prtype [(ngModel)]="prtypeEle" class="form-control input-sm" (change)="onChange($event.target.id)" aria-describedby="basic-prtype" id="prtype" style="width: 200px;" tabindex="1" [ngModelOptions]="{standalone: true}">
             <option *ngFor="let investment of investments">{{ investment.invName }}</option>
           </select>
         </div>
@@ -31,7 +31,7 @@
           <span class="input-group-addon" style="width: 150px; text-align: right;" id="basic-profitcenter">Profit Center
             : </span>
           <select #profit class="form-control input-sm" (change)="onChange($event.target.id)" aria-describedby="basic-profitcenter" id="profitcenter" style="width: 200px;" tabindex="4">
-            <option value="{{costcenter.costCtr}}" *ngFor="let costcenter of costcenters">{{costcenter.costCtr}} {{costcenter.costCtrName}}</option>
+            <option value="{{costcenter.costCtr}}" *ngFor="let costcenter of profitCenter">{{costcenter.costCtr}} {{costcenter.costCtrName}}</option>
           </select>
         </div>
         <!-- Request by -->
@@ -81,36 +81,37 @@
         <!-- Description -->
         <div class="input-group" style="margin-top: 5px;">
           <span class="input-group-addon" style="width: 150px; text-align: right;" id="basic-desc">Desc:</span>
-          <input #desc id="desc" class="form-control input-sm" (onkeyup)="OnKeyUp($event.target.id)" type="text" style="width: 200px;" aria-describedby="basic-desc" tabindex="11">
+          <input #desc id="desc" [(ngModel)]="descEle" class="form-control input-sm" (onkeyup)="OnKeyUp($event.target.id)" type="text" style="width: 200px;" aria-describedby="basic-desc" tabindex="11" [ngModelOptions]="{standalone: true}">
         </div>
         <!-- Quantity -->
         <div class="input-group" style="margin-top: 5px;">
           <span class="input-group-addon" style="width: 150px; text-align: right;" id="basic-qty">Qty:</span>
-          <input #qty id="qty" class="form-control input-sm" type="number" (onkeyup)="OnKeyUp($event.target.id)" style="width: 200px;" maxlength="3" aria-describedby="basic-qty" tabindex="12">
+          <input #qty id="qty" [(ngModel)]="qtyEle" class="form-control input-sm" type="number" (onkeyup)="OnKeyUp($event.target.id)" style="width: 200px;" maxlength="3" aria-describedby="basic-qty" tabindex="12" [ngModelOptions]="{standalone: true}">
         </div>
         <!-- Unit -->
         <div class="input-group" style="margin-top: 5px;">
           <span class="input-group-addon" style="width: 150px; text-align: right;" id="basic-unit">Unit :
           </span>
-          <select #unit class="form-control input-sm" (change)="onChange($event.target.id)" aria-describedby="basic-unit" id="unit" style="width: 200px;" tabindex="13">
+          <select #unit [(ngModel)]="unitEle" class="form-control input-sm" (change)="onChange($event.target.id)" aria-describedby="basic-unit" id="unit" style="width: 200px;" tabindex="13" [ngModelOptions]="{standalone: true}">
             <option *ngFor="let unit of units">{{ unit.unit }}</option>
           </select>
         </div>
         <!-- Unit Price -->
         <div class="input-group" style="margin-top: 5px;">
           <span class="input-group-addon" style="width: 150px; text-align: right;" id="basic-unitprice">Unit Price :</span>
-          <input #unitprice id="unitprice" class="form-control input-sm" (change)="onChange($event.target.id)" type="number" style="width: 200px;" aria-describedby="basic-unitprice" tabindex="14">
+          <input #unitprice [(ngModel)]="unitpriceEle" id="unitprice" class="form-control input-sm" (change)="onChange($event.target.id)" type="number" style="width: 200px;" aria-describedby="basic-unitprice" tabindex="14" [ngModelOptions]="{standalone: true}">
         </div>
         <!-- Currency -->
         <div class="input-group" style="margin-top: 5px;">
           <span class="input-group-addon" style="width: 150px; text-align: right;" id="basic-curr">Currency :
           </span>
-          <select #currency class="form-control input-sm"
+          <select #currency [(ngModel)]="currencyEle"
+          class="form-control input-sm"
           aria-describedby="basic-curr"
           id="curr" style="width: 200px;"
           (change)="onChange($event.target.id)"
-          tabindex="15">
-            <option *ngFor="let currency of currencies" [value]="currency.no">{{ currency.curr }}</option>
+          tabindex="15" [ngModelOptions]="{standalone: true}">
+            <option *ngFor="let currency of currencies" [ngValue]="currency.no">{{ currency.curr }}</option>
           </select>
         </div>
       </div>
@@ -123,12 +124,12 @@
         <!-- Remark -->
         <div class="input-group" style="margin-top: 5px;">
           <span class="input-group-addon" style="width: 150px; text-align: right;" id="basic-remark">Remark :</span>
-          <input #prremark type="text" id="prremark" class="form-control input-sm" style="width: 200px;" aria-describedby="basic-remark" tabindex="16">
+          <input #prremark [(ngModel)]="remarkEle" type="text" id="prremark" class="form-control input-sm" style="width: 200px;" aria-describedby="basic-remark" tabindex="16" [ngModelOptions]="{standalone: true}">
         </div>
       </div>
       <div class="col-sm-4">
           <button class="btn btn-primary" style="margin-top: 5px; width: 173px;" type="submit" (click)="itemAdded()" tabindex="17">Save</button>
-          <button class="btn btn-default" style="margin-top: 5px; width: 173px;" (click)="onSavetoFirebase()">Cancel</button>
+          <button class="btn btn-default" style="margin-top: 5px; width: 173px;" (click)="itemClear()">Clear</button>
       </div>
     </div>
   </form>

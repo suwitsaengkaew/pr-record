@@ -1,5 +1,11 @@
 <div class="container-fluid">
-  <app-prinputform (onInputPrData)="itemPrAdded($event)"></app-prinputform>
+  <app-prinputform (onInputPrData)="itemPrAdded($event)"
+  [remarkEle]="remarkEle"
+  [descEle]="descEle"
+  [qtyEle]="qtyEle"
+  [unitEle]="unitEle"
+  [unitpriceEle]="unitpriceEle"
+  [currencyEle]="currencyEle"></app-prinputform>
   <hr>
   <!-- <app-prinput-preview
   *ngFor="let prinputdata of prinputdatas"
@@ -7,4 +13,4 @@
    <app-prinput-preview
   [prinputdatas]="prinputdatas"></app-prinput-preview>
 </div>
-{{ CostCenter | async}}
+{{ firebase | async | json }}

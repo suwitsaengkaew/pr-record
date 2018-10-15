@@ -30,11 +30,12 @@ export class FirebaseService {
     }
 
     OngetCostCenter() {
-        this.http.get('https://exhe-gsuite.firebaseio.com/costcenter.json')
+        return this.http.get('https://exhe-gsuite.firebaseio.com/costcenter.json')
         .map(
             (response: Response) => {
                 const res: CostCenterModel[] = response.json();
                 console.log(res);
+                return res;
             }
         );
     }

@@ -1,9 +1,8 @@
-import { Component, OnInit, EventEmitter, Output, ViewChild, ElementRef } from '@angular/core';
+import { Component, OnInit, EventEmitter, Output, ViewChild, ElementRef, Input } from '@angular/core';
 import { DatePipe } from '@angular/common';
 import { PrinputdataModel } from '../../shared/pr.model';
 import { Months, Suppliers, Units, CostCenters, Currencies, Plants, Investments, BuzAreas, Requestbys } from '../../shared/templete.model';
-import { TestingCompilerImpl } from '@angular/platform-browser-dynamic/testing/src/compiler_factory';
-import { FirebaseService } from '../../services/firebase.service';
+import { CostCenterModel } from '../../shared/pr.model';
 
 // For Example in case of use Directive //
 // @Directive({
@@ -27,7 +26,24 @@ import { FirebaseService } from '../../services/firebase.service';
 export class PrinputformComponent implements OnInit {
   // tslint:disable-next-line:no-output-on-prefix
   @Output() onInputPrData = new EventEmitter<PrinputdataModel>();
+  // tslint:disable-next-line:no-output-on-prefix
+  @Output() onClearBtn = new EventEmitter<void>();
   @Output() ServiceClick = new EventEmitter<String>();
+
+  // tslint:disable-next-line:no-input-rename
+  @Input('prtypeEle') prtypeEle: string;
+  // tslint:disable-next-line:no-input-rename
+  @Input('remarkEle') remarkEle: string;
+  // tslint:disable-next-line:no-input-rename
+  @Input('descEle') descEle: string;
+  // tslint:disable-next-line:no-input-rename
+  @Input('qtyEle') qtyEle: string;
+  // tslint:disable-next-line:no-input-rename
+  @Input('unitEle') unitEle: string;
+  // tslint:disable-next-line:no-input-rename
+  @Input('unitpriceEle') unitpriceEle: string;
+  // tslint:disable-next-line:no-input-rename
+  @Input('currencyEle') currencyEle: string;
 
   // Column 1
   @ViewChild('prtype') prtype: ElementRef;
@@ -58,6 +74,7 @@ export class PrinputformComponent implements OnInit {
   units = Units;
   suppliers = Suppliers;
   costcenters = CostCenters;
+  profitCenter: CostCenterModel[];
   currencies = Currencies;
   plants = Plants;
   prdateModel = '';
@@ -66,15 +83,10 @@ export class PrinputformComponent implements OnInit {
   buzares = BuzAreas;
   requestbys = Requestbys;
 
-  constructor(private firebaseservice: FirebaseService
+  constructor(
   ) { }
 
   ngOnInit() {
-  }
-
-  onSavetoFirebase() {
-    this.firebaseservice.OnSave();
-    this.firebaseservice.OnSaveSuppliers();
   }
 
   itemAdded() {
@@ -118,27 +130,27 @@ export class PrinputformComponent implements OnInit {
     if (_prnumber.value.length < 1) {
       _prnumber.style.backgroundColor = 'pink';
       this.validate = false;
-     }
+    }
     if (_prdate.value.length < 1) {
       _prdate.style.backgroundColor = 'pink';
       this.validate = false;
-     }
+    }
     if (_dlvdate.value.length < 1) {
       _dlvdate.style.backgroundColor = 'pink';
       this.validate = false;
-     }
+    }
     if (_invnumber.value.length < 1) {
       _invnumber.style.backgroundColor = 'pink';
       this.validate = false;
-     }
+    }
     if (_suppliername.value.length < 1) {
       _suppliername.style.backgroundColor = 'pink';
       this.validate = false;
-     }
+    }
     if (_desc.value.length < 1) {
       _desc.style.backgroundColor = 'pink';
       this.validate = false;
-     }
+    }
     if (_qty.value.length < 1) {
       _qty.style.backgroundColor = 'pink';
       this.validate = false;
@@ -190,6 +202,32 @@ export class PrinputformComponent implements OnInit {
         break;
       case 'buzarea':
         this.buzarea.nativeElement.style.backgroundColor = 'white';
+        console.log();
+        switch (this.buzarea.nativeElement.value) {
+          case '1-B':
+            this.profitCenter = this.costcenters.filter(
+              buz => buz.costCtr.substring(0, 2) === '1P'
+            );
+            // console.log(this.profitCenter);
+            break;
+          case '2-B':
+            this.profitCenter = this.costcenters.filter(
+              buz => buz.costCtr.substring(0, 2) === '2P'
+            );
+            break;
+          case '3-B':
+            this.profitCenter = this.costcenters.filter(
+              buz => buz.costCtr.substring(0, 2) === '3P'
+            );
+            break;
+          case '4-B':
+            this.profitCenter = this.costcenters.filter(
+              buz => buz.costCtr.substring(0, 2) === '4P'
+            );
+            break;
+          default:
+            break;
+        }
         this.validate = true;
         break;
       case 'profitcenter':
@@ -314,4 +352,7 @@ export class PrinputformComponent implements OnInit {
 
   }
 
+  itemClear() {
+    this.onClearBtn.emit();
+  }
 }

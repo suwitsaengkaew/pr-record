@@ -1,5 +1,6 @@
 import { Component, OnInit, EventEmitter, Output, Input } from '@angular/core';
 import { PrinputdataModel } from '../shared/pr.model';
+import { Currencies, Units } from '../shared/templete.model';
 
 // Service
 import { PurchaseOrderService } from '../services/pr.service';
@@ -14,40 +15,44 @@ import { FirebaseService } from '../services/firebase.service';
   styleUrls: ['./prinput.component.css']
 })
 export class PrinputComponent implements OnInit {
-  // tslint:disable-next-line:no-output-on-prefix
-  @Output() onSaveDataEmit = new EventEmitter<PrinputdataModel>();
-  @Input() prinputdata = new EventEmitter<PrinputdataModel>();
-
   prinputdatas: PrinputdataModel[] = [];
-
+  remarkEle: string;
+  descEle: string;
+  qtyEle: string;
+  unitEle = Units;
+  unitpriceEle: string;
+  currencyEle = Currencies;
   constructor(
-    private service: PurchaseOrderService,
-    private firebaseservice: FirebaseService
-  ) {}
+    private service: PurchaseOrderService, private firebaesService: FirebaseService
+  ) { }
 
-  CostCenter = this.firebaseservice.OngetCostCenter();
   ngOnInit() {
   }
 
+  // tslint:disable-next-line:member-ordering
+  firebase = this.firebaesService.OngetCostCenter();
+
   itemPrAdded(event: PrinputdataModel) {
-    console.dir(JSON.stringify(event));
-    this.service.helloWorld(event)
-    .toPromise()
-    .then(
-      status => {
-        console.log(status);
-        const _state = JSON.parse(status.text());
-        console.log('State ->', _state);
-        if ( (_state[0]['notice']['text']) === 'Added' ) {
-        this.prinputdatas.push(event);
+    // console.dir(JSON.stringify(event));
+    this.service.putPrAdded(event)
+    .subscribe(
+      (response) => {
+        const res = JSON.parse(response);
+        console.log(res);
+        if (res[0]['notice']['text'] === 'Added') {
+          this.prinputdatas.push(event);
+          this.remarkEle = '';
+          this.descEle = '';
+          this.qtyEle = '';
+          this.unitEle = [];
+          this.unitpriceEle = '';
+          this.currencyEle = [];
         } else {
+          alert('Cannot save to database or other error \n' + res[0]['notice'][1]['text']);
         }
-      })
-      .catch(
-        err => {
-          console.log('Err -> ', err);
-        }
-      );
+      },
+      (error) => console.log(error)
+    );
   }
 
 

@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { PurchaseOrderService } from '../services/pr.service';
 
 @Component({
   selector: 'app-prview',
@@ -7,9 +8,18 @@ import { Component, OnInit } from '@angular/core';
 })
 export class PrviewComponent implements OnInit {
 
-  constructor() { }
+  constructor(private service: PurchaseOrderService) { }
+  prsearchresult;
 
   ngOnInit() {
+  }
+
+  prsearch() {
+    this.service.prsearch()
+    .subscribe(
+      (res: any[]) => console.log(res),
+      (error) => console.log(error)
+    );
   }
 
 }

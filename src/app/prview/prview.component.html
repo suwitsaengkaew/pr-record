@@ -1,74 +1,133 @@
 <div class="container-fluid">
-    <div class="row">
-      <form class="form-inline">
-        <div class="form-group">
-          <input type="text" class="form-control input-sm" placeholder="TYPE OF ">
-        </div>
-        <div class="form-group">
-          <input type="text" class="form-control input-sm" placeholder="KEY WORD">
-        </div>
-        <button type="submit" class="btn btn-default input-sm" style="font-size: 12px;" >Search >></button>
-      </form>
-    </div>
-    <div class="table-responsive" style="margin-top: 10px;" >
-      <table class="table table-bordered table-hover" style="font-size: 12px;">
-        <thead>
-          <tr>
-            <td>
-              PR TYPE
-            </td>
-            <td>
-              PLANT
-            </td>
-            <td>
-              PROFIT<br>AREA
-            </td>
-            <td>
-              BUSINESS<br>AREA
-            </td>
-            <td>
-              REQUEST<br>BY
-            </td>
-            <td>
-              PR NUMBER
-            </td>
-            <td>
-              PR DATE
-            </td>
-            <td>
-              DIV DATE
-            </td>
-            <td>
-              INVESTMENT<br>NUMBER
-            </td>
-            <td>
-              SUPPLIER
-            </td>
-            <td>
-              DESCRIPTION
-            </td>
-            <td>
-              QUANTITY
-            </td>
-            <td>
-              UNIT
-            </td>
-            <td>
-              UNIT PRICE
-            </td>
-            <td>
-              TOTAL PRICE
-            </td>
-            <td>
-              CURRENCY
-            </td>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-
-          </tr>
-        </tbody>
-      </table>
-    </div>
+  <div class="row" style="margin-left: 1px;">
+    <form class="form-inline">
+      <div class="form-group">
+        <input type="text" class="form-control input-sm" placeholder="TYPE OF ">
+      </div>
+      <div class="form-group">
+        <input type="text" class="form-control input-sm" placeholder="KEY WORD">
+      </div>
+      <div class="form-group">
+        <input type="date" class="form-control input-sm" placeholder="KEY WORD">
+      </div>
+      <div class="form-group">
+        <input type="date" class="form-control input-sm" placeholder="KEY WORD">
+      </div>
+      <button type="submit" class="btn btn-default input-sm" style="font-size: 12px;" (click)="prsearch()">Search >></button>
+    </form>
+  </div>
+  <div class="table-responsive" style="margin-top: 10px;">
+    <table class="table table-bordered table-hover" style="font-size: 12px;">
+      <thead>
+        <tr>
+          <td>
+            PR TYPE
+          </td>
+          <td>
+            PLANT
+          </td>
+          <td>
+            PROFIT<br>AREA
+          </td>
+          <td>
+            BUSINESS<br>AREA
+          </td>
+          <td>
+            REQUEST<br>BY
+          </td>
+          <td>
+            PR NUMBER
+          </td>
+          <td>
+            PR DATE
+          </td>
+          <td>
+            DIV DATE
+          </td>
+          <td>
+            INVESTMENT<br>NUMBER
+          </td>
+          <td>
+            SUPPLIER
+          </td>
+          <td>
+            DESCRIPTION
+          </td>
+          <td>
+            QTY
+          </td>
+          <td>
+            UNIT
+          </td>
+          <td>
+            UNIT PRICE
+          </td>
+          <td>
+            TOTAL PRICE
+          </td>
+          <td>
+            CUR
+          </td>
+          <td>
+            REMARK
+          </td>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let prresult of prsearchresult">
+          <td>
+            {{prresult.PR_TYPE}}
+          </td>
+          <td>
+            {{prresult.PR_PLANT}}
+          </td>
+          <td>
+            {{prresult.PR_PROFIT_AREA}}
+          </td>
+          <td>
+            {{prresult.PR_BUSINESS_AREA}}
+          </td>
+          <td>
+            {{prresult.PR_REQUEST_BY}}
+          </td>
+          <td>
+            {{prresult.PR_NUMBER}}
+          </td>
+          <td>
+            {{prresult.PR_DATE}}
+          </td>
+          <td>
+            {{prresult.PR_DUE_DATE}}
+          </td>
+          <td>
+            {{prresult.PR_INVNUMBER}}
+          </td>
+          <td>
+            {{prresult.PR_SUPPLIER_NAME}}
+          </td>
+          <td>
+            {{prresult.PR_ITEM_DETAIL}}
+          </td>
+          <td>
+            {{prresult.PR_QTY}}
+          </td>
+          <td>
+            {{prresult.PR_UNIT_NAME}}
+          </td>
+          <td>
+            {{prresult.PR_UNIT_PRICE}}
+          </td>
+          <td>
+            {{prresult.PR_AMOUNT_PRICE}}
+          </td>
+          <td>
+            {{prresult.PR_CURRENCY}}
+          </td>
+          <td>
+            {{prresult.PR_REMARK}}
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
 </div>
